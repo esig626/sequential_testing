@@ -1,0 +1,333 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\ind}{\mathbf{1}}
+
+\title{Sequential Composite Hypothesis Testing on Decision Trees}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Problem formulation}
+\label{sec:problem_formulation}
+
+We consider a sequence of composite binary testing problems arranged on a rooted binary decision tree. At each nonterminal node, data are observed and a binary statistical test selects one of the two outgoing edges. The selected edge determines the next node. The observation available at that next node is new, but its conditional law may depend on the complete history of previous observations and decisions. Thus the statistical decision changes not only the path through the tree, but also the law of the data on which future decisions will be based.
+
+The purpose of this section is to fix the probabilistic model and notation. In particular, we do not impose independence across stages, identical distribution across stages, or a product structure within a stage. Each observation variable below may itself represent an arbitrary finite data block.
+
+\subsection{Decision tree and information structure}
+
+Let
+\[
+\mathcal{T}=(\cV,\cE)
+\]
+be a finite rooted binary tree with root $v_{\circ}$ and $T$ decision stages. Let $\cV_t$ denote the set of nodes at stage $t$, so that $\cV_1=\{v_{\circ}\}$ and $\cV_{T+1}$ is the set of terminal nodes. Every $v\in\cV_t$, $1\le t\le T$, has exactly two children. We write
+\[
+\Gamma(v,a)\in\cV_{t+1},\qquad a\in\{0,1\},
+\]
+for the child reached by taking edge $a$ from node $v$.
+
+The random node occupied at stage $t$ is denoted by $V_t$. The process starts at
+\[
+V_1=v_{\circ},
+\]
+and, after the decision $A_t\in\{0,1\}$ is made at stage $t$, evolves according to
+\begin{equation}
+V_{t+1}=\Gamma(V_t,A_t).
+\label{eq:node_transition}
+\end{equation}
+
+At stage $t$, before choosing an edge, an observation
+\[
+X_t\in\mathsf{X}_t
+\]
+is obtained, where $(\mathsf{X}_t,\mathcal{X}_t)$ is a measurable space. The variable $X_t$ may be a single observation or an entire data block. No independence assumptions are made within $X_t$.
+
+For $t\ge 1$, define the observed history before $X_t$ is revealed by
+\begin{equation}
+H_{t-1}:=(X_1,A_1,\ldots,X_{t-1},A_{t-1}),
+\qquad H_0:=\varnothing.
+\label{eq:history}
+\end{equation}
+Let $\cH_{t-1}$ denote the corresponding history space. Since $V_t$ is determined recursively from $v_{\circ}$ and $A_1,\ldots,A_{t-1}$, the current node is a deterministic function of $H_{t-1}$. We write this function as
+\[
+v_t(h_{t-1})\in\cV_t.
+\]
+After $X_t=x_t$ and $A_t=a_t$ are observed, the history is updated as
+\[
+h_t=(h_{t-1},x_t,a_t).
+\]
+The associated filtration is
+\[
+\cF_t:=\sigma(H_t),\qquad 0\le t\le T.
+\]
+
+\subsection{History dependent composite hypotheses}
+
+For every stage $t$, every admissible history $h_{t-1}\in\cH_{t-1}$, and every edge index $i\in\{0,1\}$, let
+\[
+\cC_{t,i}(h_{t-1})\subseteq \cP(\mathsf{X}_t)
+\]
+be a nonempty class of probability laws on $(\mathsf{X}_t,\mathcal{X}_t)$. At the realised history $h_{t-1}$, the local composite binary testing problem is
+\begin{equation}
+\mathsf{H}_{t,0}(h_{t-1}):
+\mathcal{L}(X_t\mid H_{t-1}=h_{t-1})\in\cC_{t,0}(h_{t-1})
+\end{equation}
+versus
+\begin{equation}
+\mathsf{H}_{t,1}(h_{t-1}):
+\mathcal{L}(X_t\mid H_{t-1}=h_{t-1})\in\cC_{t,1}(h_{t-1}).
+\end{equation}
+When $\mathsf{H}_{t,i}(h_{t-1})$ holds, edge $i$ is regarded as the correct outgoing edge at the current node.
+
+The dependence of $\cC_{t,i}$ on $h_{t-1}$ is essential. It permits the law of the current data to depend on every previous data block and every previous decision. In particular,
+\begin{equation}
+\mathcal{L}(X_{t+1}\mid H_t=h_t)
+=
+\mathcal{L}(X_{t+1}\mid X_{1:t}=x_{1:t},A_{1:t}=a_{1:t})
+\label{eq:history_dependent_law}
+\end{equation}
+may vary with both $x_{1:t}$ and $a_{1:t}$. The decision $A_t$ therefore has a dual role. It is a statistical conclusion about the local testing problem and, through \eqref{eq:node_transition}, an action that selects the next node and hence the family of conditional laws relevant to the next observation.
+
+For deterministic tests, $A_t$ is itself a function of the observed data. It is nevertheless retained explicitly in the history because it identifies the branch that was actually taken. This distinction will matter whenever different branches induce different future observation laws.
+
+To define a complete model on the tree, let
+\[
+\vartheta:\cV\setminus\cV_{T+1}\to\{0,1\}
+\]
+be a fixed truth map, where $\vartheta(v)$ is the correct outgoing edge at node $v$. Along the realised path, define
+\begin{equation}
+\Theta_t:=\vartheta(V_t).
+\label{eq:true_edge}
+\end{equation}
+An admissible environment is a pair
+\[
+\eta=(\vartheta,\mathbf{R}),
+\qquad
+\mathbf{R}=(R_1,\ldots,R_T),
+\]
+where each $R_t$ is a probability kernel satisfying
+\begin{equation}
+R_t(\cdot\mid h_{t-1})
+\in
+\cC_{t,\vartheta(v_t(h_{t-1}))}(h_{t-1})
+\label{eq:admissible_environment}
+\end{equation}
+for every admissible history $h_{t-1}$. We denote the class of all admissible environments by $\mathfrak{E}$.
+
+The formulation in \eqref{eq:admissible_environment} deliberately leaves the dependence structure unrestricted. Additional models may later restrict $\mathfrak{E}$, for example by imposing a Markov structure, a common latent variable, a controlled transition model, or a parametric family of conditional kernels.
+
+\subsection{Sequential testing policy}
+
+At stage $t$, a randomised test is a measurable function
+\begin{equation}
+\phi_t:\cH_{t-1}\times\mathsf{X}_t\to[0,1],
+\label{eq:local_test}
+\end{equation}
+where $\phi_t(h_{t-1},x_t)$ is the conditional probability of selecting edge $1$ after observing $(h_{t-1},x_t)$. Thus
+\begin{equation}
+\Prob(A_t=1\mid H_{t-1}=h_{t-1},X_t=x_t)
+=
+\phi_t(h_{t-1},x_t).
+\label{eq:decision_rule}
+\end{equation}
+A deterministic test is the special case $\phi_t\in\{0,1\}$.
+
+For notational convenience, let $\kappa_{\phi_t}$ denote the Bernoulli decision kernel induced by $\phi_t$:
+\begin{align}
+\kappa_{\phi_t}(\{1\}\mid h,x)&=\phi_t(h,x),\\
+\kappa_{\phi_t}(\{0\}\mid h,x)&=1-\phi_t(h,x).
+\end{align}
+The complete sequential testing policy is
+\[
+\boldsymbol{\phi}:=(\phi_1,\ldots,\phi_T).
+\]
+
+For a fixed history $h_{t-1}$, define the local Type I and Type II errors by
+\begin{align}
+\alpha_t(\phi_t\mid h_{t-1})
+&:=
+\sup_{P\in\cC_{t,0}(h_{t-1})}
+\E_P\!\left[\phi_t(h_{t-1},X_t)\right],
+\label{eq:local_type1}\\
+\beta_t(\phi_t\mid h_{t-1})
+&:=
+\sup_{Q\in\cC_{t,1}(h_{t-1})}
+\E_Q\!\left[1-\phi_t(h_{t-1},X_t)\right].
+\label{eq:local_type2}
+\end{align}
+For a prescribed local Type I constraint $\varepsilon_t\in(0,1)$, the optimal local Type II error is
+\begin{equation}
+\beta_t^{\star}(\varepsilon_t\mid h_{t-1})
+:=
+\inf_{\phi_t:\,\alpha_t(\phi_t\mid h_{t-1})\le\varepsilon_t}
+\beta_t(\phi_t\mid h_{t-1}).
+\label{eq:local_optimal_type2}
+\end{equation}
+This is an ordinary composite binary testing problem once the history is fixed. The difficulty is that the history is random, its distribution depends on all earlier tests, and the current decision changes the statistical problem encountered at later stages.
+
+Consequently, a test that is locally optimal in the sense of \eqref{eq:local_optimal_type2} need not be globally optimal over the tree. A decision rule can have excellent current error performance while steering the process towards a branch on which future hypotheses are difficult to distinguish. Conversely, a rule that sacrifices some current performance may lead to a branch on which later data are substantially more informative.
+
+\subsection{The induced path law}
+
+Fix an admissible environment $\eta=(\vartheta,\mathbf{R})$ and a policy $\boldsymbol{\phi}$. Their interaction induces a joint law on observations and decisions. By the chain rule,
+\begin{equation}
+\Prob_{\eta}^{\boldsymbol{\phi}}
+(dx_{1:T},da_{1:T})
+=
+\prod_{t=1}^{T}
+R_t(dx_t\mid h_{t-1})
+\,\kappa_{\phi_t}(da_t\mid h_{t-1},x_t).
+\label{eq:path_law}
+\end{equation}
+Equation \eqref{eq:path_law} is the basic probabilistic object of the problem. In general it is not a product measure of the form $R^{\otimes T}$. The conditional kernel at stage $t$ may depend on all previous observations and decisions, and the policy itself contributes to the law of the future history by selecting the branch that is visited.
+
+The usual independent and identically distributed model is recovered as a special case. If the same law $R$ is used at every stage and
+\[
+R_t(\cdot\mid h_{t-1})=R(\cdot)
+\qquad
+\text{for every }t\text{ and }h_{t-1},
+\]
+then the observation process is independent across stages. The setting considered here is precisely the regime in which this reduction is unavailable.
+
+\subsection{Pathwise errors}
+
+Under an admissible environment, the correct edge at stage $t$ is $\Theta_t$ from \eqref{eq:true_edge}. Define the local decision error event
+\begin{equation}
+E_t:=\{A_t\neq\Theta_t\}.
+\label{eq:local_error_event}
+\end{equation}
+The event that at least one incorrect edge is selected by stage $T$ is
+\begin{equation}
+E_{\le T}:=\bigcup_{t=1}^{T}E_t.
+\label{eq:path_error_event}
+\end{equation}
+A natural global minimax error criterion is therefore
+\begin{equation}
+\mathcal{R}_T(\boldsymbol{\phi})
+:=
+\sup_{\eta\in\mathfrak{E}}
+\Prob_{\eta}^{\boldsymbol{\phi}}(E_{\le T}).
+\label{eq:path_risk}
+\end{equation}
+The local asymmetric errors in \eqref{eq:local_type1} and \eqref{eq:local_type2} and the global path error in \eqref{eq:path_risk} answer different questions. The former quantify the quality of a particular binary decision conditional on the history at which it is made. The latter quantifies the reliability of the complete sequence of decisions. Both will be relevant, and neither can in general be recovered from the other by multiplying marginal error probabilities.
+
+\subsection{R\'enyi structure without tensorisation}
+
+The central information theoretic issue is the loss of tensorisation. For two probability laws $P$ and $Q$ with densities $p$ and $q$ with respect to a common dominating measure, define for $\lambda>0$, $\lambda\neq1$,
+\begin{align}
+H_{\lambda}(Q,P)
+&:=
+\int q^{\lambda}p^{1-\lambda}\,d\mu,
+\label{eq:hellinger_integral}\\
+D_{\lambda}(Q\Vert P)
+&:=
+\frac{1}{\lambda-1}\log H_{\lambda}(Q,P).
+\label{eq:renyi_divergence}
+\end{align}
+For independent observations, the Hellinger integral tensorises and hence the R\'enyi divergence is additive. This is the source of the familiar identity
+\[
+D_{\lambda}(Q^{\otimes n}\Vert P^{\otimes n})
+=
+nD_{\lambda}(Q\Vert P).
+\]
+No such identity is available for \eqref{eq:path_law} in general.
+
+To expose the replacement structure, fix two systems of conditional kernels
+\[
+\mathbf{P}=(P_1,\ldots,P_T),
+\qquad
+\mathbf{Q}=(Q_1,\ldots,Q_T),
+\]
+and a common policy $\boldsymbol{\phi}$. Assume that, for every $t$ and history $h_{t-1}$, $P_t(\cdot\mid h_{t-1})$ and $Q_t(\cdot\mid h_{t-1})$ admit densities $p_t(\cdot\mid h_{t-1})$ and $q_t(\cdot\mid h_{t-1})$ with respect to a common measure $\mu_t$. Let $\Prob_{\mathbf{P}}^{\boldsymbol{\phi}}$ and $\Prob_{\mathbf{Q}}^{\boldsymbol{\phi}}$ denote the corresponding path laws.
+
+For $0<\lambda<1$, define the backward quantities
+\begin{equation}
+G_{T+1}(h_T):=1,
+\label{eq:backward_terminal}
+\end{equation}
+and, for $t=T,T-1,\ldots,1$,
+\begin{align}
+G_t(h_{t-1})
+:=
+\int_{\mathsf{X}_t}
+&q_t(x_t\mid h_{t-1})^{\lambda}
+ p_t(x_t\mid h_{t-1})^{1-\lambda}
+\nonumber\\
+&\times
+\sum_{a_t\in\{0,1\}}
+\kappa_{\phi_t}(\{a_t\}\mid h_{t-1},x_t)
+G_{t+1}(h_{t-1},x_t,a_t)
+\,\mu_t(dx_t).
+\label{eq:backward_hellinger}
+\end{align}
+A direct expansion of the path laws gives
+\begin{equation}
+H_{\lambda}\!\left(
+\Prob_{\mathbf{Q}}^{\boldsymbol{\phi}},
+\Prob_{\mathbf{P}}^{\boldsymbol{\phi}}
+\right)
+=
+G_1(\varnothing).
+\label{eq:path_hellinger_recursion}
+\end{equation}
+Thus the product identity of the independent case is replaced by a history dependent backward recursion. The testing policy appears inside this recursion because the selected branch determines the continuation term $G_{t+1}$.
+
+In the independent and identical special case with no branch dependence, the continuation term is the same after every history and \eqref{eq:backward_hellinger} reduces to repeated multiplication by a single Hellinger integral. Equation \eqref{eq:path_hellinger_recursion} then recovers ordinary R\'enyi tensorisation.
+
+This suggests three linked problems. First, one must obtain finite sample R\'enyi bounds for the conditional composite problem at a fixed history. Second, one must determine how these local bounds propagate through the history dependent path law. Third, because the current test changes the future statistical experiment, one must determine whether the globally optimal policy admits a dynamic characterisation in which immediate testing error is balanced against the future distinguishability of the branches.
+
+These questions, rather than dependence in isolation, define the sequential composite testing problem studied here.
+
+\subsection{Notation fixed throughout}
+
+The following notation will be used throughout the article.
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$\mathcal{T}=(\cV,\cE)$ & rooted binary decision tree \\
+$T$ & number of decision stages \\
+$V_t$ & node occupied at stage $t$ \\
+$\Gamma(v,a)$ & child of node $v$ reached by edge $a$ \\
+$X_t$ & data observed at stage $t$ \\
+$A_t\in\{0,1\}$ & edge selected by the test at stage $t$ \\
+$H_{t-1}$ & complete observed history before $X_t$ \\
+$\cF_t$ & sigma field generated by $H_t$ \\
+$\cC_{t,i}(h)$ & composite class for edge $i$ at stage $t$ after history $h$ \\
+$\mathsf{H}_{t,i}(h)$ & local composite hypothesis corresponding to edge $i$ \\
+$\vartheta(v)$ & correct outgoing edge at node $v$ \\
+$\Theta_t=\vartheta(V_t)$ & correct edge at the realised stage $t$ node \\
+$\eta=(\vartheta,\mathbf{R})$ & admissible environment \\
+$\mathfrak{E}$ & class of admissible environments \\
+$\phi_t$ & randomised binary test at stage $t$ \\
+$\boldsymbol{\phi}$ & complete sequential testing policy \\
+$\kappa_{\phi_t}$ & Bernoulli decision kernel induced by $\phi_t$ \\
+$\alpha_t(\phi_t\mid h)$ & local worst case Type I error \\
+$\beta_t(\phi_t\mid h)$ & local worst case Type II error \\
+$\beta_t^{\star}(\varepsilon_t\mid h)$ & optimal local Type II error at Type I level $\varepsilon_t$ \\
+$E_t$ & event that the wrong edge is selected at stage $t$ \\
+$E_{\le T}$ & event of at least one wrong edge by stage $T$ \\
+$\mathcal{R}_T(\boldsymbol{\phi})$ & worst case pathwise error probability \\
+$H_{\lambda}(Q,P)$ & order $\lambda$ Hellinger integral \\
+$D_{\lambda}(Q\Vert P)$ & order $\lambda$ R\'enyi divergence \\
+$G_t(h)$ & backward Hellinger continuation quantity \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
