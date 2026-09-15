@@ -1,0 +1,33 @@
+# Research instructions
+
+Read `sequential_testing.tex`, `RELATION_TO_PARALLEL_HYPOTHESIS.md`, `CURRENT_STATUS.md`, `docs/NOTATION.md`, `docs/RENYI_APPROXIMATION_PLAN.md`, and `docs/CLAIMS.md` before scientific work.
+
+## Preserve the model
+
+Use lambda for Rényi order and D_lambda(Q||P), with q raised to lambda. Alpha_t and beta_t are local testing errors. A_t is the selected edge, not a Monte Carlo estimator. Keep the original notation and the observed history including actions.
+
+The setting is new data whose future law can depend on decisions. Keep Parallel-Hypothesis separate. Do not replace the observed path law by a law including hidden states, model labels or unrevealed random seeds. The simulation label is not the correct edge.
+
+Evaluate both models under the same specified policy. Common action kernels cancel in a path likelihood ratio but still affect future histories. A different policy comparison requires its own formula.
+
+Use unnormalised masses at zero reach. Do not query conditional laws of an absent model as though they were intrinsic. Never smooth exact support, clip an invalid estimate into a success claim, or infer support equality from sampled paths.
+
+Distinguish conditional kernels that can be chosen independently across histories from a shared parameter or latent environment. The truth map vartheta(v) is fixed across histories reaching the same node, even when kernels are rectangular. Do not move a supremum over that map inside each history update without justification.
+
+Keep pairwise divergence, composite separation, local testing errors and probability of any wrong edge distinct. Do not multiply marginal correctness probabilities or identify a terminal testing error with path risk.
+
+## Evidence and computation
+
+Read the relevant prompt before implementation. Keep proofs, numerical checks, conjectures and literature results separate. No general dependent variance bound, linear horizon algorithm or globally optimal policy is currently established. Do not claim the elementary predictable identities are novel without a literature audit.
+
+Count filtering, conditional evaluation, policy evaluation, sampling, state construction, branch integration and numerical precision costs. A full decision tree can be exponential in the horizon. Preserve the rare action counterexample and both uncertainty consistency examples.
+
+Run `python -m unittest discover -s tests -v` after code changes and add a regression test for each confirmed defect. Record all model probabilities, policy, truth map restrictions, order, horizon, method, seed when relevant, sample count, runtime, error criterion, software version and commit for experiments. Separate statistical, numerical, model approximation and optimisation error.
+
+## Publication and files
+
+The recovery workspace was added to main at the owner's request. Use a descriptive research branch for subsequent substantive tasks, unless instructed otherwise. Do not force push, rewrite unrelated history or merge without instruction. Publish completed milestones with `CURRENT_STATUS.md` and `results/checkpoint.json`; do not leave the only copy in a temporary workspace.
+
+The original scientific files remain authoritative. Put proposed corrections in a dated note before altering the manuscript's model or notation. Do not silently change assumptions to obtain a theorem. Update `docs/CLAIMS.md` when a claim changes status.
+
+Use primary sources and record reading depth. The motivating article is linked, not mirrored. Do not upload third party full texts without appropriate permission, credentials, private correspondence or unrelated personal context. Do not choose a project licence without the owner's decision.

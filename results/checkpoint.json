@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-16",
+  "repository": "esig626/sequential_testing",
+  "source_base_commit": "a7765a057b1879dc12a3fc66359e5f2b9a52ebd8",
+  "milestone": "workspace recovery and initial controlled identities",
+  "completed": [
+    "read all three existing files",
+    "read motivating article",
+    "adapt plan and notation",
+    "derive controlled identities",
+    "run finite reference checks"
+  ],
+  "preserved_scientific_blobs": {
+    "sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
+    "RELATION_TO_PARALLEL_HYPOTHESIS.md": "5be6b8271b4565b959381e23a2cb015c0e9c588d"
+  },
+  "validation": {
+    "command": "python -m unittest discover -s tests -v",
+    "python": "3.13.5",
+    "test_methods": 30,
+    "failures": 0,
+    "errors": 0,
+    "status": "passed locally",
+    "remote_ci": "not run",
+    "stochastic_performance_study": false,
+    "source_sha256": {
+      "src/__init__.py": "4b887b10d121fad3f8f359cac014147c63d25342562cc3b90a54080251c9c667",
+      "src/controlled_renyi.py": "0104f0860ede4d90f333590f6069b750d232b61a24c8c64b96594b39d1f31a95",
+      "tests/test_controlled_renyi.py": "c4c9aa8bba9a21dd86853c2515c814e48404fb989bc311cfacc7c02ae75c77c1"
+    }
+  },
+  "article": {
+    "arxiv": "2607.27088v1",
+    "versioned_html_read": true,
+    "author_pdf_read": true,
+    "full_copy_mirrored": false,
+    "reason": "No verified public republication permission; source record and link only"
+  },
+  "next_task": "prompts/01_controlled_renyi_foundations.md",
+  "open": [
+    "independent proof review",
+    "novelty audit",
+    "action integration implementation",
+    "model specific useful variance bound",
+    "uniform composite and policy guarantees"
+  ]
+}
