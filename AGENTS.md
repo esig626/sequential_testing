@@ -1,6 +1,14 @@
 # Research instructions
 
-Read `manuscript/sequential_testing.tex`, `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`, `CURRENT_STATUS.md`, `docs/NOTATION.md`, `docs/RENYI_APPROXIMATION_PLAN.md`, and `docs/CLAIMS.md` before scientific work.
+Read `manuscript/sequential_testing.tex`, `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`, `CURRENT_STATUS.md`, `docs/RESEARCH_LEDGER.md`, `docs/NOTATION.md`, `docs/RENYI_APPROXIMATION_PLAN.md`, and `docs/CLAIMS.md` before scientific work.
+
+## Mandatory research ledger
+
+`docs/RESEARCH_LEDGER.md` is compulsory reading before every scientific task, including derivations, literature searches, theorem drafting, numerical experiments, code changes motivated by research, and manuscript development.
+
+Before doing new work, identify the ledger IDs that overlap the task. Do not rederive, recode, or relitigate an existing result or failed route unless the task explicitly calls for independent verification, correction, strengthening, or generalisation. If a listed counterexample already rules out the proposed route under the same assumptions, change the assumptions explicitly or choose another route.
+
+Every substantive research task must update the ledger before it is declared complete. Results, failures, and counterexamples are never deleted merely because later work supersedes them; mark them `SUPERSEDED` and point to the replacement. The ledger is an index, so proofs and detailed evidence remain in their authoritative source files.
 
 ## Preserve the model
 
@@ -28,6 +36,6 @@ Run `python -m unittest discover -s tests -v` after code changes and add a regre
 
 The recovery workspace was added to main at the owner's request. Use a descriptive research branch for subsequent substantive tasks, unless instructed otherwise. Do not force push, rewrite unrelated history or merge without instruction. Publish completed milestones with `CURRENT_STATUS.md` and `results/checkpoint.json`; do not leave the only copy in a temporary workspace.
 
-The original scientific files remain authoritative. Put proposed corrections in a dated note before altering the manuscript's model or notation. Do not silently change assumptions to obtain a theorem. Update `docs/CLAIMS.md` when a claim changes status.
+The original scientific files remain authoritative. Put proposed corrections in a dated note before altering the manuscript's model or notation. Do not silently change assumptions to obtain a theorem. Update `docs/CLAIMS.md` when a claim changes status, and keep `docs/RESEARCH_LEDGER.md` consistent with it.
 
 Use primary sources and record reading depth. The motivating article is linked, not mirrored. Do not upload third party full texts without appropriate permission, credentials, private correspondence or unrelated personal context. Do not choose a project licence without the owner's decision.
