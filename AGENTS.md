@@ -10,6 +10,10 @@ Before doing new work, identify the ledger IDs that overlap the task. Do not red
 
 Every substantive research task must update the ledger before it is declared complete. Results, failures, and counterexamples are never deleted merely because later work supersedes them; mark them `SUPERSEDED` and point to the replacement. The ledger is an index, so proofs and detailed evidence remain in their authoritative source files.
 
+### Solved single-node base case
+
+Ledger entry `SB001` is mandatory. The isolated iid single-node composite binary testing problem is already solved in Vera Sigüenza and Esposito, *Finite Sample Bounds for Composite Hypothesis Testing*. Do not treat its finite-sample achievability or converse theory as an open task, do not spend research time rederiving `beta_n^star`, and do not search for a particular test merely for its own sake. Use the prior theorem as nodewise input whenever its assumptions hold. Work on a local node is permitted only when a sequential, conditional, dependence, or model assumption genuinely changes the prior problem, and the task must state exactly what changed. The primary unresolved target is `UQ001`: how the local errors propagate through the action-selected sequential path.
+
 ## Preserve the model
 
 Use lambda for Rényi order and D_lambda(Q||P), with q raised to lambda. Alpha_t and beta_t are local testing errors. A_t is the selected edge, not a Monte Carlo estimator. Keep the original notation and the observed history including actions.
