@@ -2,6 +2,8 @@
 
 Date: 16 September 2026. Local derivations are supported by working proofs and finite numerical checks, not independent review or a novelty determination.
 
+This file records the current status of compact scientific claims. The mandatory historical do not duplicate index is `docs/RESEARCH_LEDGER.md`; it additionally records failed routes, counterexamples, attempted methods and open directions. Scientific work must consult the ledger before revisiting any item below.
+
 | ID | Claim | Status |
 | --- | --- | --- |
 | C01 | Independent nonidentical laws give additive Rényi divergence | Established literature, R2 Theorem 28 |
@@ -25,4 +27,4 @@ Date: 16 September 2026. Local derivations are supported by working proofs and f
 | C19 | Pairwise path divergence determines the repository's minimax any error risk | Not established; a separate statistical connection is required |
 | C20 | The predictable identities are novel | Not asserted; filtered Monte Carlo and Hellinger process audit pending |
 
-The 30 local test methods are regression checks, not a proof of C17 or C18. There has been no remote CI run or broad stochastic comparison. Read the research plan and working note for precise hypotheses rather than treating this short register as theorem statements.
+The 30 local test methods are regression checks, not a proof of C17 or C18. There has been no remote CI run or broad stochastic comparison. Read the research ledger, research plan and working note for precise hypotheses rather than treating this short register as theorem statements.
