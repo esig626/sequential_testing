@@ -10,13 +10,14 @@ Read [AGENTS.md](AGENTS.md), the mandatory [research ledger](docs/RESEARCH_LEDGE
 
 The approximation project evaluates the manuscript's induced path laws under a fixed common policy. It preserves the order lambda and the direction D_lambda(Q||P). Independence without identical distribution still gives additivity; action dependent conditional laws are the substantive target.
 
-The current work derives controlled predictable gap identities, connects them to the existing backward quantity G_t, and retains a rare action counterexample to a uniform variance bound. No general efficient approximation theorem or optimal policy theorem is claimed.
+The current work derives controlled predictable gap identities, connects them to the existing backward quantity G_t, and retains a rare action counterexample to a uniform variance bound. A literature audit now also fixes the boundary with active hypothesis testing and controlled sensing: action dependent observations, composite controlled sensing, and controlled Markovian observations are established ingredients and must not be claimed as novel on their own. No general efficient approximation theorem or optimal policy theorem is claimed.
 
 ## Research materials
 
 | Location | Contents |
 | --- | --- |
-| [Research ledger](docs/RESEARCH_LEDGER.md) | Mandatory do not duplicate index of results, failures, methods and open problems |
+| [Research ledger](docs/RESEARCH_LEDGER.md) | Mandatory do not duplicate index of results, failures, methods, literature boundaries and open problems |
+| [Xing and controlled testing literature audit](notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md) | General information functions, reusable ideas, closest controlled sensing results and novelty boundary |
 | [Research plan](docs/RENYI_APPROXIMATION_PLAN.md) | Scope, model specific routes, accuracy, cost and stages |
 | [Working derivations](notes/2026-09-16_controlled_renyi_identities.md) | Prefix accumulation, branch selection, estimator and variance algebra |
 | [Notation](docs/NOTATION.md) | Existing symbols and carefully separated additions |
@@ -24,7 +25,7 @@ The current work derives controlled predictable gap identities, connects them to
 | [Integration record](docs/INTEGRATION.md) | Files read, preserved hashes and changes from the earlier plan |
 | `src/` and `tests/` | Small finite controlled reference calculations |
 | `experiments/` and `results/` | Experiment specification, validation and checkpoint |
-| `sources/` | Article record, PDF shortcut and bibliography |
+| `sources/` | Article source records and bibliography, including SS-2025-0042 |
 
 ## Run the reference checks
 
@@ -36,8 +37,12 @@ python -m unittest discover -s tests -v
 
 The initial suite has 30 passing local test methods. It includes deterministic formula checks and seeded checks that a sampled trajectory's estimator agrees with enumeration. It is not a stochastic performance study or a remote CI result. Enumeration is exponential and ordinary floating point is unsuitable for extreme numerical regimes.
 
-## Article source
+## Article sources
 
-The motivating article is Anand, Benford and Guo, arXiv:2607.27088v1. See its [source record](sources/2607.27088/SOURCE.md). The versioned HTML and author PDF were read. The record and shortcut link to the full article, but no article bytes are mirrored: the displayed arXiv licence does not establish permission to republish the complete text in this public repository.
+The original approximation article is Anand, Benford and Guo, arXiv:2607.27088v1. See its [source record](sources/2607.27088/SOURCE.md).
+
+The sequential testing literature audit begins from Yiming Xing, *Sequential Multiple Testing of Multiple Composite Hypotheses: an Asymptotic Optimality Theory with General Information Functions*, SS-2025-0042. See its [source record](sources/SS-2025-0042/SOURCE.md).
+
+The source records link to the full external articles. Third party article bytes are not mirrored in this repository.
 
 No project wide software or manuscript licence has been chosen on the owner's behalf.
