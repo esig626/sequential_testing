@@ -12,8 +12,8 @@
     "run finite reference checks"
   ],
   "preserved_scientific_blobs": {
-    "sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
-    "RELATION_TO_PARALLEL_HYPOTHESIS.md": "5be6b8271b4565b959381e23a2cb015c0e9c588d"
+    "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
+    "manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md": "5be6b8271b4565b959381e23a2cb015c0e9c588d"
   },
   "validation": {
     "command": "python -m unittest discover -s tests -v",
