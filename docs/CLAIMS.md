@@ -2,7 +2,7 @@
 
 Date: 16 September 2026. Local derivations are supported by working proofs and finite numerical checks, not independent review or a novelty determination.
 
-This file records the current status of compact scientific claims. The mandatory historical do not duplicate index is `docs/RESEARCH_LEDGER.md`; it additionally records failed routes, counterexamples, attempted methods and open directions. Scientific work must consult the ledger before revisiting any item below.
+This file records the current status of compact scientific claims. The mandatory historical do not duplicate index is `docs/RESEARCH_LEDGER.md`; it additionally records failed routes, counterexamples, attempted methods, literature boundaries, and open directions. Scientific work must consult the ledger before revisiting any item below.
 
 | ID | Claim | Status |
 | --- | --- | --- |
@@ -26,5 +26,12 @@ This file records the current status of compact scientific claims. The mandatory
 | C18 | General linear horizon approximation or optimal policy theorem | Not established |
 | C19 | Pairwise path divergence determines the repository's minimax any error risk | Not established; a separate statistical connection is required |
 | C20 | The predictable identities are novel | Not asserted; filtered Monte Carlo and Hellinger process audit pending |
+| C21 | Sequential testing with actions that change future observation laws is established literature | Established by controlled sensing and active sequential hypothesis testing; not available as a novelty claim |
+| C22 | Composite hypotheses together with controlled sequential sensing are established | Established by Deshmukh, Veeravalli and Bhashyam 2021 in single parameter exponential families |
+| C23 | Controlled Markovian observations with causal sensing and sequential risk constraints are established | Established by Nitinawarat and Veeravalli 2015; not the same pathwise composite decision tree |
+| C24 | General nonlinear information functions can replace linear n-times-divergence scales in sequential composite testing | Established by Xing SS-2025-0042, with unequal variance Gaussian, AR(1), and Markov examples in the supplement |
+| C25 | Temporal dependence, non iid observations, and dependence across streams are already treated in sequential testing theory | Established in the cited Song, Xing and Fellouris, and Chaudhuri and Fellouris literature |
+| C26 | The complete combination in this repository has no direct theorem match in the targeted search | NO DIRECT MATCH LOCATED, not a novelty claim; theorem level audit remains open |
+| C27 | Requiring each reported local hypothesis decision itself to be the control selecting the next experiment may distinguish this model from standard active testing where sensing control and final decision are separate | Open structural question; must be formalised and audited before any novelty statement |
 
-The 30 local test methods are regression checks, not a proof of C17 or C18. There has been no remote CI run or broad stochastic comparison. Read the research ledger, research plan and working note for precise hypotheses rather than treating this short register as theorem statements.
+The 30 local test methods are regression checks, not a proof of C17 or C18. There has been no remote CI run or broad stochastic comparison. Read the research ledger, the Xing literature audit, research plan and working note for precise hypotheses rather than treating this short register as theorem statements.
