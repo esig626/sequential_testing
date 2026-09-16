@@ -2,7 +2,7 @@
 
 Date: 16 September 2026.
 
-The repository has been prepared as a research workspace without changing `sequential_testing.tex` or `RELATION_TO_PARALLEL_HYPOTHESIS.md`. The starting commit was `a7765a057b1879dc12a3fc66359e5f2b9a52ebd8`.
+The repository has been prepared as a research workspace without changing `manuscript/sequential_testing.tex` or `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`. The starting commit was `a7765a057b1879dc12a3fc66359e5f2b9a52ebd8`.
 
 Completed here: repository and article reading; an adapted research plan; a notation register; working controlled identities; a claims register; finite reference code; 30 passing local test methods; source records; a first executable research task.
 
