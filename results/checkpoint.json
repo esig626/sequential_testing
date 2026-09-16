@@ -4,7 +4,7 @@
   "repository": "esig626/sequential_testing",
   "branch": "research/xing-2025-literature-audit",
   "source_base_commit": "6a3b83f393eeee14a31be48a00350565d40085d1",
-  "milestone": "conditional Renyi chain rule bottleneck literature audit",
+  "milestone": "conditional Renyi chain rule audit plus ledger-first source-first research protocol",
   "completed": [
     "preserve solved single-node base case SB001",
     "preserve two-node singleton decomposition R026",
@@ -16,7 +16,10 @@
     "audit general-source testing via Han 2000",
     "audit filtered Hellinger experiment literature via Jacod and Dzhaparidze Spreij Valkeila",
     "reframe O016 from divergence algebra to finite-sample decision-selected converse propagation",
-    "update research ledger claims status and source record"
+    "update research ledger claims status and source record",
+    "make docs/RESEARCH_LEDGER.md the controlling document before every material research decision",
+    "require repository source-library inspection before every external literature search",
+    "require new useful literature to be recorded in sources and the ledger before task completion"
   ],
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
@@ -25,7 +28,20 @@
   "research_ledger": {
     "path": "docs/RESEARCH_LEDGER.md",
     "mandatory_read": true,
+    "controlling_document_for_research_decisions": true,
+    "must_reconsult_before_material_decision": true,
     "must_update_after_substantive_research": true,
+    "source_first_before_external_search": true,
+    "source_checks": [
+      "sources/README.md",
+      "sources/references.bib",
+      "relevant sources/*/references.bib",
+      "relevant sources/*/SOURCE.md",
+      "literature notes cited by overlapping ledger entries",
+      "repository search for author theorem concept formula and keywords"
+    ],
+    "external_search_requires_stated_gap": true,
+    "new_useful_sources_must_be_recorded": true,
     "solved_base_case": "SB001",
     "ultimate_question": "UQ001",
     "latest_result": "R032",
@@ -45,6 +61,7 @@
   "conditional_renyi_audit": {
     "note": "notes/2026-09-16_conditional_renyi_chain_rule_literature_audit.md",
     "source_record": "sources/conditional_renyi_chain_rule/SOURCE.md",
+    "topic_bibliography": "sources/conditional_renyi_chain_rule/references.bib",
     "core_reference": "Polyanskiy and Wu, Information Theory: From Coding to Learning, Section 7.12, Eq. 7.77",
     "main_conclusion": "the dependent future-data term and exact dependent Renyi chain algebra are established; the unresolved problem is finite-sample decision-selected testing and coherent composite error propagation",
     "direct_match_to_complete_repository_testing_problem": "not located in targeted search",
@@ -60,7 +77,7 @@
     "previous_command": "python -m unittest discover -s tests -v",
     "previous_test_methods": 30,
     "rerun_for_this_task": false,
-    "reason_not_rerun": "No code changed; this task was a literature and conceptual audit",
+    "reason_not_rerun": "No code changed; this task updated literature and research-governance records",
     "remote_ci": "not run"
   },
   "ledger_range_after_update": {
@@ -70,7 +87,7 @@
     "methods": "M001-M013",
     "open_problems": "O001-O018"
   },
-  "next_task": "O016: insert the established conditional Renyi chain rule into the finite-sample singleton converse and derive a recursive decision-selected converse in terms of previous-node error quantities and future conditional information",
+  "next_task": "O016: after rechecking the ledger and existing source library, insert the established conditional Renyi chain rule into the finite-sample singleton converse and derive a recursive decision-selected converse in terms of previous-node error quantities and future conditional information",
   "open": [
     "derive singleton finite-sample converse recursion from R005 plus R027-R029",
     "lift singleton converse to coherent history-dependent composite classes",
