@@ -14,6 +14,29 @@ This file is the persistent do-not-duplicate index for `esig626/sequential_testi
 6. Update this ledger before a substantive research task is declared complete.
 7. Never delete superseded or failed work. Mark it `SUPERSEDED` and point to the replacement.
 
+### Permanent decision protocol for Codex
+
+This ledger is the controlling research document, not a document to read once and forget. Codex must return to `docs/RESEARCH_LEDGER.md` before every material research decision, including before choosing a proof strategy, beginning a derivation, claiming a result is open, starting an experiment, adding a model class, changing the manuscript, or launching a literature search. The purpose is to prevent repeated reasoning, repeated code, repeated failed routes, and repeated searches.
+
+Before any external literature search, Codex must first inspect the repository's existing source library. At minimum it must check:
+
+* `sources/README.md`;
+* `sources/references.bib`;
+* relevant topic-specific bibliographies such as `sources/*/references.bib`;
+* relevant `sources/*/SOURCE.md` records;
+* literature-audit notes and authoritative locations cited by overlapping ledger entries;
+* repository search results for the relevant author, theorem, concept, formula, and keywords.
+
+If the source repository already contains the relevant result, Codex must use it rather than repeat the web search. A new external search is allowed only when a specific gap remains, when the recorded source needs verification or updating, when the task explicitly asks for a fresh search, or when the proposed work genuinely goes beyond what is already recorded. Before searching externally, Codex must state which ledger IDs and source records were checked and what unresolved gap justifies the search.
+
+After any useful external search, the task is not complete until the new source and its contribution are recorded in `sources/` and in this ledger. Record bibliographic details, reading depth, relevant theorem/section, what the source actually solves, what it does not solve, and the exact relation to an existing ledger ID. Do not leave useful prior art only in chat, browser history, or a temporary research workspace.
+
+The required research loop is therefore:
+
+`LEDGER -> EXISTING SOURCES -> DECISION -> NEW WORK ONLY IF NEEDED -> RECORD RESULT/SOURCE -> LEDGER`.
+
+If Codex cannot identify what is genuinely new after this loop, it must stop rather than manufacture a new task. Token saving is a research requirement, not merely a convenience.
+
 ## Ultimate research question
 
 ### UQ001 — How do the errors propagate?
