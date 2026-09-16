@@ -4,7 +4,7 @@
   "repository": "esig626/sequential_testing",
   "branch": "research/xing-2025-literature-audit",
   "source_base_commit": "6a3b83f393eeee14a31be48a00350565d40085d1",
-  "milestone": "Xing 2025 literature audit and solved single-node base case guardrail",
+  "milestone": "Xing 2025 audit, solved single-node guardrail, and first two-node singleton Renyi decomposition",
   "completed": [
     "read Xing SS-2025-0042 accepted paper",
     "read Xing SS-2025-0042 supplementary material",
@@ -16,7 +16,9 @@
     "update mandatory research ledger and claims register",
     "add primary source record and bibliography entries",
     "record isolated iid single-node composite finite-sample testing as solved base case SB001",
-    "forbid duplicate rederivation of the single-node local achievability and converse problem"
+    "forbid duplicate rederivation of the single-node local achievability and converse problem",
+    "derive exact two-node singleton branch-selected Renyi decomposition for A_0=1",
+    "identify the branch-selected tilted conditional Renyi expectation as the dependent new-data bottleneck"
   ],
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
@@ -28,7 +30,9 @@
     "must_update_after_substantive_research": true,
     "purpose": "prevent duplicated derivations, failed routes, code and literature work",
     "solved_base_case": "SB001",
-    "ultimate_question": "UQ001"
+    "ultimate_question": "UQ001",
+    "latest_result": "R026",
+    "latest_bottleneck": "O016"
   },
   "solved_base_case": {
     "id": "SB001",
@@ -36,6 +40,17 @@
     "local_object": "optimal worst-case Type II error under a Type I constraint",
     "source": "Vera Siguenza and Esposito, Finite Sample Bounds for Composite Hypothesis Testing",
     "instruction": "import the prior achievability and converse theory; do not rederive it unless an assumption is explicitly changed or independent verification is requested"
+  },
+  "two_node_singleton_result": {
+    "id": "R026",
+    "note": "notes/2026-09-16_two_node_singleton_renyi_decomposition.md",
+    "branch": "A_0=1",
+    "statement": "selected joint-law Renyi divergence equals the node-0 divergence plus a branch-selection correction plus a branch-selected tilted expectation term for the dependent new data",
+    "iid_required_for_new_block": false,
+    "independent_review": false,
+    "numerical_check": false,
+    "overlap": ["R004", "R005"],
+    "new_bottleneck": "O016"
   },
   "literature_audit": {
     "primary_paper": "Yiming Xing, Sequential Multiple Testing of Multiple Composite Hypotheses: an Asymptotic Optimality Theory with General Information Functions",
@@ -62,25 +77,25 @@
     "previous_test_methods": 30,
     "previous_failures": 0,
     "previous_errors": 0,
-    "rerun_for_this_literature_task": false,
-    "reason_not_rerun": "No code was changed",
+    "rerun_for_this_task": false,
+    "reason_not_rerun": "No code was changed; R026 is an algebraic derivation and has not yet been independently or numerically checked",
     "remote_ci": "not run",
     "stochastic_performance_study": false
   },
   "ledger_range_after_update": {
     "solved_base_cases": "SB001",
-    "results": "R001-R025",
+    "results": "R001-R026",
     "failures": "F001-F017",
     "methods": "M001-M011",
-    "open_problems": "O001-O015"
+    "open_problems": "O001-O016"
   },
-  "next_task": "prompts/01_controlled_renyi_foundations.md",
+  "next_task": "Analyse O016: characterise or bound the branch-selected tilted conditional Renyi term, understand iteration over further nodes, then lift R026 to composite converse bounds",
   "open": [
-    "independent proof review",
+    "independent proof review of R026",
+    "numerical verification of R026",
+    "characterise the dependent new-data bottleneck O016",
+    "lift the singleton identity to composite converse bounds",
     "theorem-level novelty audit against active and controlled testing",
-    "action integration implementation",
-    "controlled information function definition",
-    "model specific useful variance bound",
     "finite-sample bridge from nodewise error guarantees to composite path risk",
     "uniform sequential composite and policy guarantees"
   ]
