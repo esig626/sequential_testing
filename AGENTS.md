@@ -4,11 +4,21 @@ Read `manuscript/sequential_testing.tex`, `manuscript/RELATION_TO_PARALLEL_HYPOT
 
 ## Mandatory research ledger
 
-`docs/RESEARCH_LEDGER.md` is compulsory reading before every scientific task, including derivations, literature searches, theorem drafting, numerical experiments, code changes motivated by research, and manuscript development.
+`docs/RESEARCH_LEDGER.md` is the controlling document for research decisions. It is compulsory reading before every scientific task, including derivations, literature searches, theorem drafting, numerical experiments, code changes motivated by research, and manuscript development.
+
+The ledger is not merely a start-of-task checklist. Consult it again before every material research decision: starting a derivation, choosing a proof route, launching a literature search, introducing a new model class, implementing an experiment, declaring a claim open or solved, or changing the manuscript. If the next decision overlaps an existing ledger entry, follow that entry rather than rediscovering the same work.
 
 Before doing new work, identify the ledger IDs that overlap the task. Do not rederive, recode, or relitigate an existing result or failed route unless the task explicitly calls for independent verification, correction, strengthening, or generalisation. If a listed counterexample already rules out the proposed route under the same assumptions, change the assumptions explicitly or choose another route.
 
-Every substantive research task must update the ledger before it is declared complete. Results, failures, and counterexamples are never deleted merely because later work supersedes them; mark them `SUPERSEDED` and point to the replacement. The ledger is an index, so proofs and detailed evidence remain in their authoritative source files.
+### Source-first rule before external search
+
+Before any new external literature search, inspect the repository's existing source records first. At minimum check `sources/README.md`, `sources/references.bib`, the relevant `sources/*/SOURCE.md` records, and the literature notes referenced by overlapping ledger entries. Search the repository for the relevant author, theorem, concept, formula, and keywords before going online.
+
+If the repository already contains a source or literature result that answers the question, use it and do not launch a redundant web search. External searching is permitted only when there is a stated gap, when a source needs verification or updating, when the user explicitly requests a fresh search, or when the task genuinely extends beyond the recorded literature. When an external search is needed, state which ledger/source entries were checked and what unresolved gap justifies the new search.
+
+Every newly useful external source must be recorded in `sources/` with its bibliographic information, reading depth, relevant theorem/section, and exact contribution before the task is complete. Update `sources/references.bib` or a topic-specific bibliography as appropriate, and add the corresponding result/boundary/failure to the research ledger.
+
+Every substantive research task must update the ledger before it is declared complete. Results, failures, counterexamples, and literature boundaries are never deleted merely because later work supersedes them; mark them `SUPERSEDED` and point to the replacement. The ledger is an index, so proofs and detailed evidence remain in their authoritative source files.
 
 ### Solved single-node base case
 
