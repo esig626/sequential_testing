@@ -6,10 +6,12 @@ All three existing files were read. There was no existing AGENTS.md. README.md c
 
 ## Scientific files preserved without modification
 
+The two original scientific files have since been grouped under `manuscript/` without changing their contents.
+
 | File | Original Git blob SHA |
 | --- | --- |
-| `sequential_testing.tex` | `64200d14cfdcd778c201ca5f7cd7fcd45044e309` |
-| `RELATION_TO_PARALLEL_HYPOTHESIS.md` | `5be6b8271b4565b959381e23a2cb015c0e9c588d` |
+| `manuscript/sequential_testing.tex` | `64200d14cfdcd778c201ca5f7cd7fcd45044e309` |
+| `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md` | `5be6b8271b4565b959381e23a2cb015c0e9c588d` |
 
 The recovery adds a research layer; it does not replace the existing first section, renumber its equations, or merge the separate Parallel-Hypothesis project.
 
