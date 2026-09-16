@@ -48,6 +48,27 @@ The sequential dependence matters because an error at node `t` changes which nod
 
 All Rényi quantities, path divergences, information clocks, controlled sensing analogies, numerical algorithms, and policy constructions are tools towards answering UQ001. They are not the ultimate objective of the project.
 
+## Solved base cases — do not re-solve
+
+### SB001 — Isolated single-node finite-sample composite binary testing
+
+For a single isolated node with iid product data and composite classes `C_0` and `C_1`, the local object
+
+\[
+\beta_n^\star(\varepsilon;\mathcal C_0,\mathcal C_1)
+=
+\inf_{\phi_n:\,\alpha_n(\phi_n;\mathcal C_0)\leq\varepsilon}
+\sup_{Q\in\mathcal C_1}\mathbb E_{Q^{\otimes n}}[1-\phi_n(X^n)]
+\]
+
+is already the subject of the prior paper **Finite Sample Bounds for Composite Hypothesis Testing** by Vera Sigüenza and Esposito. That work provides the finite-sample achievability and converse theory for the isolated iid composite binary problem. This is the solved base case from which the present project starts.
+
+**Mandatory rule for Codex and future research:** do not treat the isolated single-node iid problem as open. Do not spend research time rederiving its achievability bounds, converse bounds, or the optimisation defining `beta_n^star`, and do not search for a particular test merely for its own sake. A particular test is relevant only when it is needed as an achievability construction or when a genuinely new assumption requires an extension.
+
+When a node in the sequential tree satisfies the assumptions of the prior single-node theory, use that theory as an input. New work begins only where the sequential structure changes the question: conditioning on realised history, action-selected future experiments, dependence across stages, coherent uncertainty across the tree, or propagation of the nodewise Type I and Type II errors into a global path error.
+
+Any task that proposes to revisit single-node composite testing must first cite `SB001` and state exactly which assumption of the prior result is being changed. If no assumption is changed and no independent verification has been explicitly requested, the task is duplicate work and must stop.
+
 ## Status vocabulary
 
 * `ESTABLISHED`: supported by an external source or a previously established theorem with applicable hypotheses.
@@ -86,6 +107,7 @@ All Rényi quantities, path divergences, information clocks, controlled sensing 
 | R022 | Finite sample active hypothesis testing results exist, including fixed horizon active testing bounds and a 2026 nonasymptotic expected stopping time bound for an elimination based active testing method. | The available results checked here are not the repository's finite sample composite controlled pathwise problem. | ESTABLISHED | Kartik, Nayyar and Mitra 2022; Lin, Nguyen, Xu and Ruchkin 2026; literature audit, Section 10 |
 | R023 | Xing gives a universal global misclassification bound `binom(K,s)(M-1)^s exp(-a_s)` and corresponding thresholds, while recommending importance sampling for sharper finite sample calibration. | Relies on the simultaneous stream error structure. It cannot be substituted directly for selected path error. | ESTABLISHED | Xing, Theorem 2 and Section 5; literature audit, Sections 7 and 8 |
 | R024 | Importance sampling that changes selected components towards their closest wrong alternatives is effective for calibrating rare sequential misclassification events. | The controlled tree analogue must use a coherent controlled change of measure and preserve policy and environment coupling. | ESTABLISHED as a method in Xing's setting; adaptation here is OPEN | Xing, Section 5; literature audit, Section 8 |
+| R025 | The isolated iid single-node finite-sample composite binary testing problem, including achievability and converse bounds for the optimal Type II error under a Type I constraint, is prior solved work and is not an open problem in this repository. | Applies to the assumptions of the prior single-node theory. The sequential project must import this result rather than rederive it. | ESTABLISHED BY PRIOR WORK | `SB001`; Vera Sigüenza and Esposito, *Finite Sample Bounds for Composite Hypothesis Testing* |
 
 ## Failure and counterexample ledger
 
@@ -107,6 +129,7 @@ All Rényi quantities, path divergences, information clocks, controlled sensing 
 | F014 | Xing's simultaneous stream threshold and sum of smallest information functions can be used directly for the repository's path error. | Not justified. Xing has independent parallel streams and one terminal decision vector; our procedure follows one action selected path and earlier errors alter later experiments. | Any imported threshold or information sum requires a new pathwise derivation. | R014, R023; literature audit, Sections 5 to 7 |
 | F015 | A sensing control policy from active hypothesis testing can be identified without qualification with the repository's edge decision. | Not generally. Standard active testing usually separates the experiment selection action from the final hypothesis decision, whereas here `A_t` is both a reported binary conclusion and the action selecting the next node. | Preserve the semantic distinction and prove any reduction explicitly. | literature audit, Sections 10 to 13 |
 | F016 | A hidden Markov Rényi divergence rate result supplies a finite sample controlled path theorem. | False as an implication. The HMM result characterises long horizon divergence for fixed dependent models. | Use it only as dependent Rényi background or for model specific asymptotics after control is fixed. | R021 |
+| F017 | Treat the isolated iid single-node composite error problem as an unsolved task and derive it again. | Duplicate work. The finite-sample local achievability and converse problem is already solved in the prior paper recorded as `SB001` and `R025`. | Stop immediately unless the task explicitly changes an assumption, seeks a strengthening, or requests independent verification. The sequential research starts from propagation of these local errors. | `SB001`; `R025` |
 
 ## Attempted and reusable method ledger
 
@@ -131,8 +154,8 @@ All Rényi quantities, path divergences, information clocks, controlled sensing 
 | O001 | Prove or refute a useful variance bound for action integrated estimation on an explicit controlled class. | Must survive F001 and include branch integration cost. | `prompts/01_controlled_renyi_foundations.md` |
 | O002 | Obtain an explicit model based bound for the remaining gain constant `K`. | An expression requiring exact `G_t` everywhere is not an efficient theorem. | `docs/RENYI_APPROXIMATION_PLAN.md`, Sections 5 and 7 |
 | O003 | Develop a general finite horizon approximation algorithm with an explicit accuracy and work guarantee. | No linear horizon result is currently established; tree size and conditional oracle cost must be counted. | `docs/RENYI_APPROXIMATION_PLAN.md` |
-| O004 | Connect fixed pair path Rényi quantities to local composite Type I and Type II errors. | Must preserve asymmetric testing and history dependent classes. | Later Stage 6 work |
-| O005 | Connect local testing guarantees to the minimax path risk `R_T`. | F007 and F008 block naive substitutions. | Later Stage 6 work |
+| O004 | Extend the already solved single-node theory `SB001` only as needed to a conditional or history-dependent node, and connect the resulting nodewise Rényi quantities to the local composite Type I and Type II errors. | The isolated iid node is solved and must not be rederived. Any new theorem must identify precisely which sequential or dependence assumption prevents direct use of `SB001`. | Later Stage 6 work; `SB001` |
+| O005 | Connect local testing guarantees to the minimax path risk `R_T`. | F007 and F008 block naive substitutions. This is part of UQ001. | Later Stage 6 work |
 | O006 | Characterise minimax recursion separately for rectangular and coupled environment classes. | F003 and F004 must remain enforced. | `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`; future manuscript development |
 | O007 | Determine whether a globally optimal testing policy admits a useful dynamic characterisation. | Local testing optimality need not imply global optimality. Compare explicitly with active sequential hypothesis testing before claiming novelty. | R017 to R019; future work after fixed policy evaluation |
 | O008 | Complete a novelty audit for predictable Hellinger process identities and controlled path formulations. | Do not label R003 to R008 novel before this audit. The active testing literature in R017 to R022 is now mandatory background. | Literature stage in `prompts/01_controlled_renyi_foundations.md` |
@@ -141,7 +164,7 @@ All Rényi quantities, path divergences, information clocks, controlled sensing 
 | O011 | Perform a theorem level novelty audit against controlled sensing, active sequential hypothesis testing, controlled Markov observations, and composite controlled sensing. | The present search establishes strong neighbouring results but not exhaustive absence of a direct theorem. | `notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md` |
 | O012 | Determine the mathematical effect of requiring the reported local decision itself to be the control selecting the next experiment, rather than introducing a separate sensing action. | F015 blocks silent identification with classical active testing. This distinction may be central to the project. | Future formulation and controlled examples |
 | O013 | Construct an importance sampling law for rare wrong path events under action dependent observations. | Proposal must be a coherent controlled path law; rectangular and coupled cases differ. | M009; F004 |
-| O014 | Develop a finite sample local or pathwise error theorem that connects the exact Hellinger / Rényi recursion to the repository's asymmetric composite testing objective. | This is the main statistical bridge still missing. Xing and active testing results are primarily KL and first order asymptotic. | O004, O005; future theorem work |
+| O014 | Develop a finite-sample pathwise error propagation theorem for UQ001, using the already solved local theory `SB001` as nodewise input wherever its assumptions apply and the exact Hellinger / Rényi recursion where sequential dependence requires it. | The local iid achievability and converse problem is not the missing theorem. The missing bridge is from nodewise guarantees to global sequential error when decisions alter future problems. | O004, O005; `SB001`; future theorem work |
 | O015 | Use a controlled finite state Markov model as the first model class where exact `G_t`, active control literature, and possible asymptotic information clocks can all be compared. | Must preserve observed state sufficiency and the truth map. | R009, R019, R021 |
 
 ## Literature boundary established on 16 September 2026
