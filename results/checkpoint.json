@@ -2,16 +2,19 @@
   "schema_version": 1,
   "date": "2026-09-16",
   "repository": "esig626/sequential_testing",
-  "source_base_commit": "a7765a057b1879dc12a3fc66359e5f2b9a52ebd8",
-  "milestone": "workspace recovery, initial controlled identities, and mandatory research ledger",
+  "branch": "research/xing-2025-literature-audit",
+  "source_base_commit": "6a3b83f393eeee14a31be48a00350565d40085d1",
+  "milestone": "Xing 2025 and controlled sequential testing literature audit",
   "completed": [
-    "read all three existing files",
-    "read motivating article",
-    "adapt plan and notation",
-    "derive controlled identities",
-    "run finite reference checks",
-    "create mandatory results failures methods and open problems research ledger",
-    "require ledger review before every scientific task through AGENTS.md"
+    "read Xing SS-2025-0042 accepted paper",
+    "read Xing SS-2025-0042 supplementary material",
+    "summarise reusable general information function and validity versus optimality ideas",
+    "search active sequential hypothesis testing and controlled sensing literature",
+    "search composite controlled sensing and controlled Markov observation literature",
+    "search non-iid and dependent sequential testing literature",
+    "search finite-sample active testing and hidden Markov Renyi literature",
+    "update mandatory research ledger and claims register",
+    "add primary source record and bibliography entries"
   ],
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
@@ -23,34 +26,50 @@
     "must_update_after_substantive_research": true,
     "purpose": "prevent duplicated derivations, failed routes, code and literature work"
   },
-  "validation": {
-    "command": "python -m unittest discover -s tests -v",
-    "python": "3.13.5",
-    "test_methods": 30,
-    "failures": 0,
-    "errors": 0,
-    "status": "passed locally",
-    "remote_ci": "not run",
-    "stochastic_performance_study": false,
-    "source_sha256": {
-      "src/__init__.py": "4b887b10d121fad3f8f359cac014147c63d25342562cc3b90a54080251c9c667",
-      "src/controlled_renyi.py": "0104f0860ede4d90f333590f6069b750d232b61a24c8c64b96594b39d1f31a95",
-      "tests/test_controlled_renyi.py": "c4c9aa8bba9a21dd86853c2515c814e48404fb989bc311cfacc7c02ae75c77c1"
-    }
+  "literature_audit": {
+    "primary_paper": "Yiming Xing, Sequential Multiple Testing of Multiple Composite Hypotheses: an Asymptotic Optimality Theory with General Information Functions",
+    "paper_id": "SS-2025-0042",
+    "doi": "10.5705/ss.202025.0042",
+    "main_pdf_read": true,
+    "supplement_read": true,
+    "detailed_note": "notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md",
+    "source_record": "sources/SS-2025-0042/SOURCE.md",
+    "direct_match_to_complete_repository_model": "not located in targeted search",
+    "novelty_claim": false,
+    "important_boundary": [
+      "action-dependent future observations are established in controlled sensing and active testing",
+      "composite hypotheses plus controlled sensing are established",
+      "controlled Markovian observations are established",
+      "non-iid and temporally dependent sequential testing are established",
+      "finite-sample active testing exists in some models",
+      "Renyi divergence rates for hidden Markov models are established"
+    ]
   },
-  "article": {
-    "arxiv": "2607.27088v1",
-    "versioned_html_read": true,
-    "author_pdf_read": true,
-    "full_copy_mirrored": false,
-    "reason": "No verified public republication permission; source record and link only"
+  "validation": {
+    "previous_command": "python -m unittest discover -s tests -v",
+    "previous_python": "3.13.5",
+    "previous_test_methods": 30,
+    "previous_failures": 0,
+    "previous_errors": 0,
+    "rerun_for_this_literature_task": false,
+    "reason_not_rerun": "No code was changed",
+    "remote_ci": "not run",
+    "stochastic_performance_study": false
+  },
+  "ledger_range_after_update": {
+    "results": "R001-R024",
+    "failures": "F001-F016",
+    "methods": "M001-M011",
+    "open_problems": "O001-O015"
   },
   "next_task": "prompts/01_controlled_renyi_foundations.md",
   "open": [
     "independent proof review",
-    "novelty audit",
+    "theorem-level novelty audit against active and controlled testing",
     "action integration implementation",
+    "controlled information function definition",
     "model specific useful variance bound",
+    "finite-sample bridge from path Renyi quantities to composite path risk",
     "uniform composite and policy guarantees"
   ]
 }
