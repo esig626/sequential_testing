@@ -2,11 +2,11 @@
 
 Date created: 16 September 2026.
 
-This file is the persistent index of results, failures, counterexamples, attempted methods, and open directions for `esig626/sequential_testing`.
+This file is the persistent index of results, failures, counterexamples, attempted methods, literature boundaries, and open directions for `esig626/sequential_testing`.
 
 Its purpose is to prevent duplicated research. Every scientific task must read this ledger before derivation, literature search, coding, numerical work, theorem drafting, or manuscript changes.
 
-The ledger is an index, not a substitute for proofs. Each entry points to the authoritative source containing the derivation, counterexample, code, or validation record.
+The ledger is an index, not a substitute for proofs. Each entry points to the authoritative source containing the derivation, counterexample, code, validation record, or literature audit.
 
 ## Mandatory use
 
@@ -30,6 +30,7 @@ Never delete an old result or failure merely because it is superseded. Mark it `
 * `FAILED / COUNTEREXAMPLE`: a proposed statement or method is false under the stated assumptions.
 * `OPEN`: no result has been established.
 * `SUPERSEDED`: retained for history but replaced by a later entry.
+* `NO DIRECT MATCH LOCATED`: a targeted literature search found no direct theorem matching the stated combination; this is not a novelty claim.
 
 ## Results ledger
 
@@ -48,6 +49,17 @@ Never delete an old result or failure merely because it is superseded. Mark it `
 | R011 | For a fixed environment, the probability of at least one future wrong edge obeys a direct absorbing backward recursion. | Fixed environment identity only. It is not a robust Bellman theorem and does not justify moving environment or truth suprema inside the recursion. | DERIVED — UNREVIEWED; CHECKED NUMERICALLY in reference examples | `notes/2026-09-16_controlled_renyi_identities.md`, Section 8 |
 | R012 | Rectangular conditional kernel uncertainty and globally coupled environment uncertainty are distinct optimisation problems. | Local pasting is valid only for a genuinely rectangular class. A fixed truth map remains coupled across histories reaching the same node. | STRUCTURAL RESULT / MODEL RULE; CHECKED BY COUNTEREXAMPLES | `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`, Section 4; `docs/RENYI_APPROXIMATION_PLAN.md`, Section 8 |
 | R013 | The current finite reference implementation reproduces path enumeration, backward recursion, predictable identities, support cases, and selected counterexamples on the included test suite. | Reference computation only. Ordinary floating point and full path enumeration are not a scalable or general guarantee. | CHECKED NUMERICALLY | `results/VALIDATION.md`; `src/controlled_renyi.py`; `tests/test_controlled_renyi.py` |
+| R014 | Xing's sequential multiple composite testing theory permits general increasing information functions rather than only linear `n` times a divergence. The optimal expected stopping scale is obtained by inverting the relevant cumulative information function at logarithmic error thresholds. | Xing studies independent streams with possible temporal dependence inside each stream, a common stopping time, and one terminal decision vector. It does not include action controlled future experiments. | ESTABLISHED | Xing, SS-2025-0042, Sections 2 to 4; `notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md`, Sections 3 and 6 |
+| R015 | Xing separates assumptions for validity from assumptions for asymptotic optimality: almost sure divergence of adaptive evidence from every wrong composite class is enough for almost sure termination and error control, while stronger information growth and complete convergence assumptions are used for matching sample size bounds. | This is a structural proof design principle, not a theorem for the present controlled model. | ESTABLISHED | Xing, Assumptions 1 to 3 and Theorems 1 to 3; literature audit, Section 4 |
+| R016 | Temporal dependence and nonlinear information clocks are already handled in sequential composite testing examples, including unequal variance Gaussian data, AR(1), and finite Markov chains. | These are passive data mechanisms. The policy does not change their future laws. | ESTABLISHED | Xing supplement, Section S1; literature audit, Section 9 |
+| R017 | Sequential hypothesis testing in which an action or experiment selection changes the distribution of later observations is classical controlled sensing / active hypothesis testing. | Covers fixed and sequential settings under various simple hypothesis models; it does not by itself reproduce the repository's tree of local composite decisions. | ESTABLISHED | Chernoff 1959; Nitinawarat, Atia and Veeravalli 2013; Naghshvar and Javidi 2013; literature audit, Section 10 |
+| R018 | Composite hypotheses together with controlled sequential sensing are established: Deshmukh, Veeravalli and Bhashyam give an error controlled, first order asymptotically optimal policy for composite multihypothesis testing in single parameter exponential families. | Sensing controls are distinct from the final hypothesis decision; the objective is expected delay subject to terminal error. | ESTABLISHED | Deshmukh, Veeravalli and Bhashyam 2021; literature audit, Sections 10 and 11 |
+| R019 | Controlled Markovian observation models with causal control, memory, nonuniform control cost, and sequential multihypothesis decisions are established. A procedure meeting separate decision risk constraints nonasymptotically while retaining asymptotic optimality is available in that model. | Fixed underlying hypothesis and sensing control framework; not a sequence of history indexed composite binary decisions with pathwise error. | ESTABLISHED | Nitinawarat and Veeravalli 2015; literature audit, Sections 10 and 11 |
+| R020 | Sequential multiple testing with non iid or dependent observations is established in several settings. Song and Fellouris use strong laws for local likelihood ratios; Xing and Fellouris treat non iid multistage tests; Chaudhuri and Fellouris allow dependence across streams. | These works do not make an earlier reported local hypothesis decision the control that selects the next composite experiment. | ESTABLISHED | Song and Fellouris 2019; Xing and Fellouris 2024; Chaudhuri and Fellouris 2024; literature audit, Section 10 |
+| R021 | Rényi divergence rates for fixed hidden Markov models can be characterised using a Markov representation and eigenvalues of an associated operator. | Long horizon dependent model result. It does not provide a finite horizon controlled composite testing theorem or policy result. | ESTABLISHED | Fuh, Fuh, Liu and Wang 2025; literature audit, Section 10 |
+| R022 | Finite sample active hypothesis testing results exist, including fixed horizon active testing bounds and a 2026 nonasymptotic expected stopping time bound for an elimination based active testing method. | The available results checked here are not the repository's finite sample composite controlled pathwise problem. | ESTABLISHED | Kartik, Nayyar and Mitra 2022; Lin, Nguyen, Xu and Ruchkin 2026; literature audit, Section 10 |
+| R023 | Xing gives a universal global misclassification bound `binom(K,s)(M-1)^s exp(-a_s)` and corresponding thresholds, while recommending importance sampling for sharper finite sample calibration. | Relies on the simultaneous stream error structure. It cannot be substituted directly for selected path error. | ESTABLISHED | Xing, Theorem 2 and Section 5; literature audit, Sections 7 and 8 |
+| R024 | Importance sampling that changes selected components towards their closest wrong alternatives is effective for calibrating rare sequential misclassification events. | The controlled tree analogue must use a coherent controlled change of measure and preserve policy and environment coupling. | ESTABLISHED as a method in Xing's setting; adaptation here is OPEN | Xing, Section 5; literature audit, Section 8 |
 
 ## Failure and counterexample ledger
 
@@ -63,8 +75,14 @@ Never delete an old result or failure merely because it is superseded. Mark it `
 | F008 | Local Type I and Type II guarantees alone determine the complete sequential path law. | False in the same data predecessor project and structurally unsafe here; the new data version remains a candidate early theorem rather than an established current theorem. | Do not propagate global path risk by multiplying or otherwise using only nominal local errors. | `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`, Section 3 |
 | F009 | Locally tilted simulation is the same as simulation from the globally tilted controlled path law. | False. The global tilted transition contains the continuation factor `G_{t+1}/G_t` and generally reweights actions. | Do not claim exact global tilted sampling from locally normalised kernels. Using exact `G_t` in a fast algorithm is circular unless its cost is counted. | `notes/2026-09-16_controlled_renyi_identities.md`, Section 6 |
 | F010 | Because the model is a finite decision tree, a backward pass is automatically linear in the horizon. | False as a complexity statement. The number of histories or nodes can itself grow exponentially with horizon. | State complexity in number of states, histories, branches, or oracle calls. Never hide tree size in `O(T)`. | `docs/RENYI_APPROXIMATION_PLAN.md`, Sections 3 and 7 |
+| F011 | Action dependent future observation laws are themselves a novel feature of sequential hypothesis testing. | False as a novelty claim. Controlled sensing and active sequential hypothesis testing study exactly the ability to choose actions or experiments that alter future observation laws. | Any novelty argument must concern the repository's more specific decision tree, composite, pathwise, or finite sample Rényi structure. | R017; literature audit, Section 10 |
+| F012 | Composite hypotheses combined with controlled sequential sensing are absent from the literature. | False. Deshmukh, Veeravalli and Bhashyam 2021 treat sequential controlled sensing for composite multihypothesis testing. | Do not claim novelty from the combination of composite hypotheses and observation control alone. | R018; literature audit, Section 10 |
+| F013 | Temporal dependence or controlled Markov memory is absent from sequential hypothesis testing theory. | False. Passive temporal dependence and controlled Markovian observations are both established. | Novelty must not be based on removing iid assumptions or adding Markov memory alone. | R016, R019, R020 |
+| F014 | Xing's simultaneous stream threshold and sum of smallest information functions can be used directly for the repository's path error. | Not justified. Xing has independent parallel streams and one terminal decision vector; our procedure follows one action selected path and earlier errors alter later experiments. | Any imported threshold or information sum requires a new pathwise derivation. | R014, R023; literature audit, Sections 5 to 7 |
+| F015 | A sensing control policy from active hypothesis testing can be identified without qualification with the repository's edge decision. | Not generally. Standard active testing usually separates the experiment selection action from the final hypothesis decision, whereas here `A_t` is both a reported binary conclusion and the action selecting the next node. | Preserve the semantic distinction and prove any reduction explicitly. | literature audit, Sections 10 to 13 |
+| F016 | A hidden Markov Rényi divergence rate result supplies a finite sample controlled path theorem. | False as an implication. The HMM result characterises long horizon divergence for fixed dependent models. | Use it only as dependent Rényi background or for model specific asymptotics after control is fixed. | R021 |
 
-## Attempted method ledger
+## Attempted and reusable method ledger
 
 | ID | Method | Current outcome | Next permissible use | Location |
 | --- | --- | --- | --- | --- |
@@ -74,6 +92,11 @@ Never delete an old result or failure merely because it is superseded. Mark it `
 | M004 | Explicit integration over selected action branches | Removes the two stage rare action sampling variance; general cost can grow as `2^b` for `b` integrated binary stages. | Immediate next research route on two to four stage examples, with complete cost accounting. | `docs/RENYI_APPROXIMATION_PLAN.md`, Route B; `prompts/01_controlled_renyi_foundations.md` |
 | M005 | Local tilted path sampling | Gives a valid importance identity but not samples from the globally tilted law. Weight variance can remain large. | Compare against M003 and M004 on explicit controlled model classes. | `notes/2026-09-16_controlled_renyi_identities.md`, Section 6 |
 | M006 | Exact finite state recursion | Effective when a genuinely sufficient observed state exists. | Use as the main tractable exact control class and as a benchmark for approximation methods. | R009 |
+| M007 | General information function / information clock asymptotics | Established and powerful in passive non iid sequential composite testing. | Develop a controlled analogue only after defining the coherent pair or composite object whose evidence growth is measured. Do not assume linear growth. | R014 to R016; literature audit, Sections 3, 4 and 13 |
+| M008 | Adaptive log likelihood versus generalised wrong class likelihood | Gives sequential evidence that supports error control and first order optimality in Xing's composite setting. | Candidate local statistic at a node when conditional models admit likelihood optimisation. Requires a new controlled and pathwise proof. | Xing 2025; literature audit, Sections 4 and 12 |
+| M009 | Rare event importance sampling towards closest wrong hypotheses | Effective in Xing's finite sample calibration. | Construct a coherent change of measure for wrong paths or adverse environments while preserving the policy. Compare against M003 to M005. | R024; literature audit, Section 8 |
+| M010 | Chernoff style controlled sensing / active testing policy design | Large established literature with asymptotic lower bounds and dynamic programming viewpoints. | Use as the baseline for global policy design after distinguishing sensing control from reported edge decisions. | R017 to R019; literature audit, Sections 10 to 13 |
+| M011 | Markov operator / spectral Rényi rate analysis | Established for fixed HMMs. | Candidate tool for long horizon controlled finite state models after a policy is fixed or an augmented state is justified. Not a finite sample replacement for `G_t`. | R021 |
 
 ## Open problem ledger
 
@@ -85,9 +108,33 @@ Never delete an old result or failure merely because it is superseded. Mark it `
 | O004 | Connect fixed pair path Rényi quantities to local composite Type I and Type II errors. | Must preserve asymmetric testing and history dependent classes. | Later Stage 6 work |
 | O005 | Connect local testing guarantees to the minimax path risk `R_T`. | F007 and F008 block naive substitutions. | Later Stage 6 work |
 | O006 | Characterise minimax recursion separately for rectangular and coupled environment classes. | F003 and F004 must remain enforced. | `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`; future manuscript development |
-| O007 | Determine whether a globally optimal testing policy admits a useful dynamic characterisation. | Local testing optimality need not imply global optimality. No such theorem exists in the repository. | Future work after fixed policy evaluation |
-| O008 | Complete a novelty audit for predictable Hellinger process identities and controlled path formulations. | Do not label R003 to R008 novel before this audit. | Literature stage in `prompts/01_controlled_renyi_foundations.md` |
+| O007 | Determine whether a globally optimal testing policy admits a useful dynamic characterisation. | Local testing optimality need not imply global optimality. Compare explicitly with active sequential hypothesis testing before claiming novelty. | R017 to R019; future work after fixed policy evaluation |
+| O008 | Complete a novelty audit for predictable Hellinger process identities and controlled path formulations. | Do not label R003 to R008 novel before this audit. The active testing literature in R017 to R022 is now mandatory background. | Literature stage in `prompts/01_controlled_renyi_foundations.md` |
 | O009 | Formalise positive reach, rectangular environments, and coupled environments directly in the manuscript. | Proposed in the relation note, not yet merged into the scientific formulation. | `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`, Section 9 |
+| O010 | Define the correct controlled information function or information process for history dependent composite experiments. | Must reduce to Xing's information clock in passive cases and respect coherent environment coupling. Do not assume `nD`. | R014 to R016; M007 |
+| O011 | Perform a theorem level novelty audit against controlled sensing, active sequential hypothesis testing, controlled Markov observations, and composite controlled sensing. | The present search establishes strong neighbouring results but not exhaustive absence of a direct theorem. | `notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md` |
+| O012 | Determine the mathematical effect of requiring the reported local decision itself to be the control selecting the next experiment, rather than introducing a separate sensing action. | F015 blocks silent identification with classical active testing. This distinction may be central to the project. | Future formulation and controlled examples |
+| O013 | Construct an importance sampling law for rare wrong path events under action dependent observations. | Proposal must be a coherent controlled path law; rectangular and coupled cases differ. | M009; F004 |
+| O014 | Develop a finite sample local or pathwise error theorem that connects the exact Hellinger / Rényi recursion to the repository's asymmetric composite testing objective. | This is the main statistical bridge still missing. Xing and active testing results are primarily KL and first order asymptotic. | O004, O005; future theorem work |
+| O015 | Use a controlled finite state Markov model as the first model class where exact `G_t`, active control literature, and possible asymptotic information clocks can all be compared. | Must preserve observed state sufficiency and the truth map. | R009, R019, R021 |
+
+## Literature boundary established on 16 September 2026
+
+The detailed audit is `notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md` and the source record for Xing is `sources/SS-2025-0042/SOURCE.md`.
+
+The search establishes that the following broad ingredients are already in the literature and must not be presented as new on their own:
+
+* action controlled future observation laws in sequential testing;
+* adaptive and causal sensing policies;
+* controlled Markovian observations;
+* composite hypotheses with controlled sensing;
+* temporal dependence and non iid sequential testing;
+* general nonlinear information growth functions;
+* dependent stream sequential multiple testing;
+* finite sample active testing bounds in some models;
+* Rényi divergence rates for hidden Markov models.
+
+No direct match was located in this search for the complete combination used by this repository: a tree of local composite binary tests in which each reported edge decision is also the control selecting the next experiment, with history dependent future composite classes, fixed node truth semantics, coherent uncertainty across the path, pathwise wrong edge risk, and finite sample Rényi analysis. Record this as `NO DIRECT MATCH LOCATED`, not `NOVEL`.
 
 ## Cross project results that must not be rediscovered here
 
