@@ -4,21 +4,19 @@
   "repository": "esig626/sequential_testing",
   "branch": "research/xing-2025-literature-audit",
   "source_base_commit": "6a3b83f393eeee14a31be48a00350565d40085d1",
-  "milestone": "Xing 2025 audit, solved single-node guardrail, and first two-node singleton Renyi decomposition",
+  "milestone": "conditional Renyi chain rule bottleneck literature audit",
   "completed": [
-    "read Xing SS-2025-0042 accepted paper",
-    "read Xing SS-2025-0042 supplementary material",
-    "summarise reusable general information function and validity versus optimality ideas",
-    "search active sequential hypothesis testing and controlled sensing literature",
-    "search composite controlled sensing and controlled Markov observation literature",
-    "search non-iid and dependent sequential testing literature",
-    "search finite-sample active testing and hidden Markov Renyi literature",
-    "update mandatory research ledger and claims register",
-    "add primary source record and bibliography entries",
-    "record isolated iid single-node composite finite-sample testing as solved base case SB001",
-    "forbid duplicate rederivation of the single-node local achievability and converse problem",
-    "derive exact two-node singleton branch-selected Renyi decomposition for A_0=1",
-    "identify the branch-selected tilted conditional Renyi expectation as the dependent new-data bottleneck"
+    "preserve solved single-node base case SB001",
+    "preserve two-node singleton decomposition R026",
+    "identify the R026 dependent future-data term as common-input conditional Renyi divergence",
+    "verify exact tilted-marginal Renyi chain rule in Polyanskiy and Wu",
+    "verify that the chain rule iterates to dependent transition kernels",
+    "audit adaptive simple channel discrimination via Hayashi 2009",
+    "audit composite adaptive channel discrimination via Bergh Datta Salzmann",
+    "audit general-source testing via Han 2000",
+    "audit filtered Hellinger experiment literature via Jacod and Dzhaparidze Spreij Valkeila",
+    "reframe O016 from divergence algebra to finite-sample decision-selected converse propagation",
+    "update research ledger claims status and source record"
   ],
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
@@ -28,75 +26,56 @@
     "path": "docs/RESEARCH_LEDGER.md",
     "mandatory_read": true,
     "must_update_after_substantive_research": true,
-    "purpose": "prevent duplicated derivations, failed routes, code and literature work",
     "solved_base_case": "SB001",
     "ultimate_question": "UQ001",
-    "latest_result": "R026",
-    "latest_bottleneck": "O016"
-  },
-  "solved_base_case": {
-    "id": "SB001",
-    "problem": "isolated iid single-node finite-sample composite binary hypothesis testing",
-    "local_object": "optimal worst-case Type II error under a Type I constraint",
-    "source": "Vera Siguenza and Esposito, Finite Sample Bounds for Composite Hypothesis Testing",
-    "instruction": "import the prior achievability and converse theory; do not rederive it unless an assumption is explicitly changed or independent verification is requested"
+    "latest_result": "R032",
+    "latest_failure_guardrail": "F018",
+    "latest_method": "M013",
+    "latest_open_problem": "O018"
   },
   "two_node_singleton_result": {
     "id": "R026",
     "note": "notes/2026-09-16_two_node_singleton_renyi_decomposition.md",
-    "branch": "A_0=1",
-    "statement": "selected joint-law Renyi divergence equals the node-0 divergence plus a branch-selection correction plus a branch-selected tilted expectation term for the dependent new data",
-    "iid_required_for_new_block": false,
-    "independent_review": false,
-    "numerical_check": false,
-    "overlap": ["R004", "R005"],
-    "new_bottleneck": "O016"
+    "status_after_audit": "correct mapping of project-specific branch selection to an established conditional Renyi chain rule",
+    "conditional_term_identification": "R027",
+    "chain_rule": "R028",
+    "multistage_iteration": "R029",
+    "iid_required_for_new_block": false
   },
-  "literature_audit": {
-    "primary_paper": "Yiming Xing, Sequential Multiple Testing of Multiple Composite Hypotheses: an Asymptotic Optimality Theory with General Information Functions",
-    "paper_id": "SS-2025-0042",
-    "doi": "10.5705/ss.202025.0042",
-    "main_pdf_read": true,
-    "supplement_read": true,
-    "detailed_note": "notes/2026-09-16_xing_2025_and_controlled_testing_literature_audit.md",
-    "source_record": "sources/SS-2025-0042/SOURCE.md",
-    "direct_match_to_complete_repository_model": "not located in targeted search",
-    "novelty_claim": false,
-    "important_boundary": [
-      "action-dependent future observations are established in controlled sensing and active testing",
-      "composite hypotheses plus controlled sensing are established",
-      "controlled Markovian observations are established",
-      "non-iid and temporally dependent sequential testing are established",
-      "finite-sample active testing exists in some models",
-      "Renyi divergence rates for hidden Markov models are established"
-    ]
+  "conditional_renyi_audit": {
+    "note": "notes/2026-09-16_conditional_renyi_chain_rule_literature_audit.md",
+    "source_record": "sources/conditional_renyi_chain_rule/SOURCE.md",
+    "core_reference": "Polyanskiy and Wu, Information Theory: From Coding to Learning, Section 7.12, Eq. 7.77",
+    "main_conclusion": "the dependent future-data term and exact dependent Renyi chain algebra are established; the unresolved problem is finite-sample decision-selected testing and coherent composite error propagation",
+    "direct_match_to_complete_repository_testing_problem": "not located in targeted search",
+    "novelty_claim": false
   },
+  "closest_testing_neighbours": [
+    "Hayashi 2009: simple adaptive channel discrimination, randomized tests, asymptotic exponents",
+    "Bergh Datta Salzmann 2025 revision: composite adaptive channel discrimination but independence retained",
+    "Han 2000: general dependent simple-source asymptotic testing",
+    "Jacod 1989 and Dzhaparidze Spreij Valkeila 2002: filtered Hellinger and randomized experiment frameworks"
+  ],
   "validation": {
     "previous_command": "python -m unittest discover -s tests -v",
-    "previous_python": "3.13.5",
     "previous_test_methods": 30,
-    "previous_failures": 0,
-    "previous_errors": 0,
     "rerun_for_this_task": false,
-    "reason_not_rerun": "No code was changed; R026 is an algebraic derivation and has not yet been independently or numerically checked",
-    "remote_ci": "not run",
-    "stochastic_performance_study": false
+    "reason_not_rerun": "No code changed; this task was a literature and conceptual audit",
+    "remote_ci": "not run"
   },
   "ledger_range_after_update": {
     "solved_base_cases": "SB001",
-    "results": "R001-R026",
-    "failures": "F001-F017",
-    "methods": "M001-M011",
-    "open_problems": "O001-O016"
+    "results": "R001-R032",
+    "failures": "F001-F018",
+    "methods": "M001-M013",
+    "open_problems": "O001-O018"
   },
-  "next_task": "Analyse O016: characterise or bound the branch-selected tilted conditional Renyi term, understand iteration over further nodes, then lift R026 to composite converse bounds",
+  "next_task": "O016: insert the established conditional Renyi chain rule into the finite-sample singleton converse and derive a recursive decision-selected converse in terms of previous-node error quantities and future conditional information",
   "open": [
-    "independent proof review of R026",
-    "numerical verification of R026",
-    "characterise the dependent new-data bottleneck O016",
-    "lift the singleton identity to composite converse bounds",
-    "theorem-level novelty audit against active and controlled testing",
-    "finite-sample bridge from nodewise error guarantees to composite path risk",
-    "uniform sequential composite and policy guarantees"
+    "derive singleton finite-sample converse recursion from R005 plus R027-R029",
+    "lift singleton converse to coherent history-dependent composite classes",
+    "connect local converse recursions to global path error UQ001",
+    "determine finite-sample effect of reported-decision-as-control versus ordinary sensing action",
+    "complete theorem-level novelty audit once theorem statements are fixed"
   ]
 }
