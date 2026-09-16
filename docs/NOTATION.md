@@ -1,6 +1,6 @@
 # Notation register
 
-The notation table in `sequential_testing.tex` is authoritative. This register adds only what the approximation work needs.
+The notation table in `manuscript/sequential_testing.tex` is authoritative. This register adds only what the approximation work needs.
 
 ## Existing notation retained
 
