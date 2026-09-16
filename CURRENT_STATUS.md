@@ -1,49 +1,46 @@
 # Current research status
 
 Date: 16 September 2026.
+Current branch: `research/selected-renyi-converse-sample-complexity`.
+Branch base: `f7e6dab50b296b1a0f9faf21b6cb1a18911e2c92` on `research/xing-2025-literature-audit`.
 
-The repository is a research workspace for finite-sample sequential composite testing when reported local decisions select future experiments. The authoritative starting scientific files remain `manuscript/sequential_testing.tex` and `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`.
+The repository studies how local Type I and Type II errors propagate when each reported randomised decision selects the next dependent experiment. The governing question remains UQ001. The original `manuscript/sequential_testing.tex` and `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md` have not been changed by this task.
 
-The mandatory research ledger is `docs/RESEARCH_LEDGER.md`. Its ultimate question `UQ001` is how nodewise Type I and Type II error tradeoffs propagate into global sequential error. `SB001` records the isolated iid single-node finite-sample composite problem as solved prior work that must not be rederived.
+## Current milestone: converse substitution and necessary sample counts
 
-The repository now also enforces a permanent **ledger-first, source-first protocol**. `docs/RESEARCH_LEDGER.md` is the controlling research document and must be consulted before every material research decision, not merely at task start. Before any new external literature search, Codex must inspect the ledger, `sources/README.md`, existing bibliographies, relevant `sources/*/SOURCE.md` records, literature notes, and repository search results. A redundant external search must not be launched when the repository already contains the relevant result. Any new useful source must be recorded in `sources/` and linked back into the ledger before the task is complete.
+The exact uploaded source was read: Vera-Sigüenza and Esposito, *Finite Sample Bounds for Composite Hypothesis Testing*, arXiv:2608.28068v1. Theorem 1 equation (4), Appendix A-A, and equation (48) provide the two converse directions used here. A dedicated versioned source record and bibliography now live in `sources/2608.28068/`. The online version record was checked, but the later version was not silently substituted for the upload.
 
-## Literature status
+The new derivation is `notes/2026-09-16_selected_renyi_converse_sample_complexity.md`. It records:
 
-The Xing SS-2025-0042 audit established that controlled sensing, adaptive observations, composite controlled sensing, non-iid sequential testing, controlled Markov observations and nonlinear information clocks are all established neighbouring areas. No direct theorem was located for the complete model in this repository; this remains `NO DIRECT MATCH LOCATED`, not a novelty claim.
+* R033: explicit substitution of the selected joint Rényi expression into both source converses, with the first rule fixed and the correct tilt in each direction;
+* R034: conversion to the (1,1) path error and cancellation of the explicit alternative branch survival factor;
+* R035: a converse for successive all ones decisions under a coherent null comparison and uniform conditional information limits;
+* R036: necessary sample size inversions in n and m, including the limited coherent pair implication for composite risk;
+* R037: an explicit correlated Gaussian model with dependence within both blocks and across them, a closed form order optimisation, and a necessary sample count example.
 
-A second targeted audit has now been completed for the exact two-node singleton bottleneck exposed by `R026`. The result materially changes the research plan:
+These are derived results with finite checks, NOT independently reviewed theorems or novelty claims. The sample counts are necessary conditions, not sufficient counts. This is converse work only. General truth maps, exact composite minimax tradeoffs, optimal policy design and matching achievability remain unresolved here.
 
-* the logarithmic branch-selected tilted expectation in `R026` is exactly the established **common-input conditional Rényi divergence**;
-* Polyanskiy and Wu give the exact Rényi chain rule for arbitrary joint laws, with the conditional term evaluated under a Rényi-tilted marginal;
-* iterating that identity gives an exact dependent-path chain decomposition using tilted prefix laws;
-* therefore non-iid dependence does **not** create an unsolved divergence algebra problem, although ordinary tensorisation is lost.
+The main useful cancellation is that beta_0+(1-beta_0)beta_1 removes the explicit division by 1-beta_0 in the selected local converse. The first decision still affects its actual alpha_0, the tilted branch reach, and the conditional information. Uniform upper information limits allow a bound independent of the particular first test; ordinary average divergence does not provide such an upper limit when lambda>1.
 
-Detailed audit: `notes/2026-09-16_conditional_renyi_chain_rule_literature_audit.md`.
-
-Source record: `sources/conditional_renyi_chain_rule/SOURCE.md`.
-
-The earlier two-node derivation remains useful as the explicit mapping from this project’s branch-selection notation to the standard chain rule: `notes/2026-09-16_two_node_singleton_renyi_decomposition.md`.
-
-## Revised bottleneck
-
-The previous wording of `O016` treated the dependent future-data term itself as the main unknown. That is now superseded.
-
-The actual next problem is to combine the established conditional Rényi chain rule with the project-specific branch-selection correction and the finite-sample testing converse. In the singleton case, the immediate goal is a recursive finite-sample converse expressed through previous-node error quantities and future conditional Rényi information.
-
-After that, the difficult composite step is to take the pairwise converse over history-dependent composite classes while preserving coherent environment coupling. This is `O017` and directly serves `UQ001`.
-
-The closest checked testing neighbours are informative but do not close this gap:
-
-* Hayashi 2009 treats adaptive discrimination of two simple channels, allows randomised tests, and accumulates Rényi/Hellinger-transform information along adaptive observations, but has one final decision and asymptotic error exponents.
-* Bergh, Datta and Salzmann treat composite adaptive channel discrimination, but still require independence even when samples are non-identical, and leave important adaptive composite exponent questions open.
-* Han 2000 treats arbitrary dependent general sources in simple asymptotic testing.
-* Jacod and Dzhaparidze–Spreij–Valkeila provide filtered Hellinger/information-process frameworks, including randomized filtered experiments, but not the finite-sample nodewise composite error-propagation theorem sought here.
-
-The ledger records these boundaries through `R032`, `F018`, `M013`, and `O018`.
+The root is indexed zero in this calculation. Z_t denotes the past before node t; h remains reserved for the log likelihood ratio. The composite class notation is C_t^(0), C_t^(1). The amendment in `docs/NOTATION.md` records the user approved changes while retaining the old manuscript conventions for historical reference.
 
 ## Validation
 
-No code was changed in these literature and research-protocol updates, so the earlier 30 local regression tests were not rerun as evidence for this task. No remote CI execution or stochastic performance study is claimed.
+`python -m unittest discover -s tests -v` passed all 47 methods locally under Python 3.13.5: the 30 existing methods plus 17 new ones. Existing source and test files were verified against their Git blob hashes before running. No production source file was changed.
 
-The next mathematical focus is `O016`: derive the singleton finite-sample converse recursion using the established conditional Rényi chain rule, without rediscovering that chain rule or the branch-selection correction.
+The new checks cover selected normalisation, genuine conditional dependence, both divergence orientations, source converse substitution against exact finite NP errors, survival cancellation, uniform information limits, a four stage path bound, zero reach, the repeated observation obstruction, invalid average information substitution, the opposite direction budget error, covariance inversion, and the Gaussian count calculation.
+
+Validation record and file hashes: `results/2026-09-16_selected_converse_checks.json`.
+No independent mathematical review, remote CI run or broad stochastic performance study is claimed.
+
+## What was already available and remains an input
+
+SB001/R025 record the original isolated iid composite testing theory as solved prior work. R026 is the two node selected Rényi decomposition. R027 to R029 identify its conditional term and chain rule as established literature. None was presented as a new theorem in this task.
+
+The earlier Xing audit and conditional Rényi audit remain in their dated notes and in `sources/SS-2025-0042/` and `sources/conditional_renyi_chain_rule/`. Controlled sensing, composite controlled testing, temporal dependence, Markov memory and nonlinear information accumulation remain established neighbouring literature. The previous targeted searches found no exact match to the complete project formulation; that is not a novelty proof for the present results.
+
+## Research protocol and next decision
+
+`docs/RESEARCH_LEDGER.md` remains the controlling document before every material research decision. Inspect its entries and the existing source library before any new search. Newly useful references and failures must be recorded immediately rather than retained only in chat.
+
+The ledger now extends through R037, F021, M014 and O019. O016 and O017 are partially answered within the precise scopes above. Next: independently review the new derivation and sharpen the necessary counts by retaining the selected tilted reach, checking root reliability, and comparing with exact selected experiment errors. Start from R033 to R037 and O019; do not redo the source converse, the chain rule or the initial substitution. A matching achievability analysis has not been requested in this task.

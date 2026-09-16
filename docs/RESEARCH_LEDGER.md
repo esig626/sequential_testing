@@ -41,22 +41,16 @@ If Codex cannot identify what is genuinely new after this loop, it must stop rat
 
 ### UQ001 — How do the errors propagate?
 
-At every reachable node, the primary object is the local composite testing error tradeoff. For a local Type I budget `epsilon_t`, write
-
-\[
-\beta_t^\star(\varepsilon_t\mid Z_{t-1}),
-\]
-
-where `Z_{t-1}` denotes the observed past before node `t`. The symbol `h` is reserved for the log likelihood ratio from the prior article and must not be used for history.
+At every reachable node, the primary object is the local composite testing error tradeoff. Under the user's approved zero based indexing, the root is V_0 and Z_t is the observed past BEFORE node t. Thus Z_0 is empty and Z_1=(X_0^n,A_0). Write the local optimal error as beta_t^star(epsilon_t | Z_t). The symbol h is reserved for the log likelihood ratio and must not be used for history. Composite classes retain C with node subscript and hypothesis superscript: C_t^(0) and C_t^(1). See the amendment in `docs/NOTATION.md`.
 
 The ultimate goal is to understand how the nodewise Type I and Type II errors propagate through the action-selected path when an earlier reported decision changes the future statistical experiment.
 
 We seek both:
 
 * **Achievability:** attainable global sequential error guarantees from attainable nodewise guarantees.
-* **Impossibility / converse:** lower bounds on global reliability, or necessary local error performance, valid for every admissible sequence of randomised tests.
+* **Impossibility / converse:** lower bounds on achievable error, or necessary local error performance, valid for every admissible sequence of randomised tests.
 
-A representative global event is making at least one wrong edge by horizon `T`. Local errors and global path risk must remain distinct.
+A representative global event is making at least one wrong edge by horizon T. Its risk is the expectation of its indicator. Local errors and global path risk must remain distinct. Conditioning only on a selected branch is different from conditioning on the whole realised past; the R033 to R037 calculation uses branch selected joint laws with old data retained.
 
 Rényi quantities, conditional divergences, information clocks, algorithms and policy constructions are tools towards UQ001, not the final objective.
 
@@ -71,6 +65,8 @@ For iid product data and composite classes `C_0` and `C_1`, the optimal worst-ca
 \]
 
 is already treated in Vera Sigüenza and Esposito, *Finite Sample Bounds for Composite Hypothesis Testing*. The paper supplies finite-sample achievability and converse bounds. Import this theory. Do not rederive it unless an assumption is explicitly changed or independent verification is requested.
+
+The exact source version used for the current converse work is the user's uploaded arXiv:2608.28068v1, Theorem 1 equation (4), Appendix A-A, and equation (48). See `sources/2608.28068/SOURCE.md` and its bibliography. The arbitrary joint law converse follows by treating the full record as one observation; independence is required for the product simplification, not that reduction. Do not silently change source versions or mistake necessary sample counts for achievable ones.
 
 ## Status vocabulary
 
@@ -111,13 +107,18 @@ is already treated in Vera Sigüenza and Esposito, *Finite Sample Bounds for Com
 | R023 | Xing gives universal simultaneous-stream misclassification bounds and thresholds. | Cannot be transplanted directly to selected path error. | ESTABLISHED | Xing SS-2025-0042 |
 | R024 | Rare-event importance sampling towards closest wrong hypotheses is effective in Xing’s setting. | Controlled-tree adaptation must preserve coherent path law. | ESTABLISHED IN SOURCE SETTING; ADAPTATION OPEN | Xing SS-2025-0042 |
 | R025 | The isolated iid single-node finite-sample composite error problem is solved prior work. | Import as nodewise input when assumptions apply. | ESTABLISHED BY PRIOR WORK | SB001 |
-| R026 | For a two-node singleton problem conditioned on branch `A_0=1`, the selected joint-law Rényi divergence decomposes into the node-0 divergence, the branch-selection correction, and a logarithmic tilted expectation of the conditional new-data Rényi integral. | Positive ordinary and tilted branch reach; no iid assumption on new data. | CORRECT DERIVATION; now identified as R005 plus the established Rényi chain rule | `notes/2026-09-16_two_node_singleton_renyi_decomposition.md` |
+| R026 | For a two-node singleton problem conditioned on branch `A_0=1`, the selected joint-law Rényi divergence decomposes into the node-0 divergence, the branch-selection correction, and a logarithmic tilted expectation of the conditional new-data Rényi integral. | Positive ordinary and tilted branch reach; no iid assumption on new data. | CORRECT DERIVATION; now identified as R005 plus the established Rényi chain rule; finite checks added with R033 | `notes/2026-09-16_two_node_singleton_renyi_decomposition.md`; `tests/test_selected_converse.py` |
 | R027 | The R026 future-data term is exactly the **common-input conditional Rényi divergence** of the two future kernels under the branch-selected tilted old-data law. | Several inequivalent notions are called conditional Rényi divergence; use the common-input/joint-law definition. | ESTABLISHED LITERATURE; exact mapping to R026 | Polyanskiy and Wu §7.12; Cai and Verdú 2019; conditional Rényi audit note |
 | R028 | Rényi divergence has an exact chain rule for arbitrary joint laws: marginal Rényi divergence plus conditional Rényi divergence evaluated under the Rényi-tilted marginal. | Dependence changes the tilted conditioning law but does not destroy exact decomposition. | ESTABLISHED | Polyanskiy and Wu, Eq. (7.77)–(7.78) |
 | R029 | Iterating R028 yields an exact full-chain decomposition for general dependent transition kernels using tilted prefix laws. | Finiteness/support conditions apply; no iid requirement. | ESTABLISHED by iteration; explicit preprint theorem available | Polyanskiy and Wu Eq. (7.77); Lei Yu, *The Entropy Method*, Theorem 8 |
 | R030 | Adaptive simple channel discrimination already uses randomised tests and accumulation of Rényi/Hellinger-transform information under adaptively selected observations. | Simple fixed channel hypotheses, sensing action separate from final decision, asymptotic exponents. | ESTABLISHED | Hayashi 2009 |
 | R031 | Composite adaptive channel discrimination is established, but the checked theory still assumes independence even when samples are non-identical; important adaptive composite exponent questions remain open. | One terminal composite decision; not arbitrary non-independent local decision tree. | ESTABLISHED BOUNDARY | Bergh, Datta and Salzmann, arXiv:2303.02016v2 |
 | R032 | Arbitrary dependence in simple testing and filtered Hellinger-information frameworks are established separately. | Han is asymptotic simple testing; Jacod/Dzhaparidze et al. provide filtered experiment/Hellinger structure rather than UQ001 finite-sample error propagation. | ESTABLISHED BACKGROUND | Han 2000; Jacod 1989; Dzhaparidze, Spreij and Valkeila 2002 |
+| R033 | Substituting R026 into the source converses gives explicit branch conditional Type II lower bounds in both Rényi directions, including the actual root errors and the appropriate tilted reach. | Fixed first rule; positive selected reaches and finite required moments. The two directions have different tilts. Actual root errors cannot be replaced by unrelated optimal or worst case errors. | DERIVED — UNREVIEWED; CHECKED NUMERICALLY | `notes/2026-09-16_selected_renyi_converse_sample_complexity.md`, Sections 2 to 4, equations (4) and (5); source equations (4), (48); `tests/test_selected_converse.py` |
+| R034 | Under Q with correct path (1,1), converting the conditional error into B_Q=beta_0+(1-beta_0)beta_1 cancels the explicit factor 1-beta_0 in R033. The resulting converse bounds an actual two node path error. | A coherent P comparison has null label 0 at the root and the child on branch 1. The first rule still affects alpha_0, tilted reach and conditional information. No independence is used. | DERIVED — UNREVIEWED; CHECKED NUMERICALLY | selected converse note, Section 5, equations (6) and (7) |
+| R035 | Uniform upper limits on conditional Rényi information give a converse for K successive all ones decisions, with the sum of logarithmic Type I budgets opposed to the sum of information limits. | Branch conditional Type I constraints and a coherent null comparison along that path are required. Proof uses surviving subprobability measures, not multiplication of marginal correctness rates. Arbitrary truth patterns are not characterised. | DERIVED — UNREVIEWED; CHECKED NUMERICALLY | selected converse note, Sections 6 and 7, equations (9) and (15); four stage finite check |
+| R036 | Inverting R035 yields necessary sample size inequalities in n and m under explicit upper information growth bounds. Linear limits can follow from uniform conditional divergence limits without iid assumptions. Coherent pair selection also gives a composite lower bound when these limits are uniform over admissible policies. | Necessary only, not sufficient or an exact sample complexity. Do not independently minimise separate divergence terms. Both opposite direction local necessary conditions are retained. | DERIVED — UNREVIEWED; CHECKED NUMERICALLY | selected converse note, Sections 6 and 8, equations (10) to (14) |
+| R037 | In the stated correlated Gaussian model, information equals lambda times J_0(n)+J_1(m), with J_t(k)=Delta_t^2[k(1-gamma_t)+2gamma_t]/[2 sigma_t^2(1+gamma_t)]. Optimising the converse order yields a closed form necessary count relationship. | Both blocks are dependent and the new block remains dependent given the old. Constancy of its conditional divergence follows from a common mean shift, not independence. The example yields a necessary total of 31, not a sufficient count; root reliability remains a separate requirement. | DERIVED — UNREVIEWED; CHECKED NUMERICALLY | selected converse note, Section 9, equations (16) to (19); `results/2026-09-16_selected_converse_checks.json` |
 
 ## Failure and counterexample ledger
 
@@ -141,6 +142,9 @@ is already treated in Vera Sigüenza and Esposito, *Finite Sample Bounds for Com
 | F016 | Hidden-Markov Rényi rate result supplies finite-sample controlled path theorem. | False implication. | Use only as dependent Rényi background. | R021 |
 | F017 | Re-solve isolated iid single-node composite testing. | Duplicate work. | Stop unless assumptions change or verification is explicitly requested. | SB001; R025 |
 | F018 | The R026 dependent future-data term is itself a new unsolved divergence object, or dependence destroys the exact Rényi chain rule. | False. It is the standard common-input conditional Rényi divergence, and the exact tilted-marginal chain rule is known. | Do not spend research effort rediscovering the algebra. The new work begins at decision-selected testing/minimax error propagation. | R027–R029; conditional Rényi audit note |
+| F019 | Raw observation count alone forces information to increase under arbitrary dependence. | False. Repeating one freshly drawn Bernoulli observation m times leaves its Rényi information constant in m. | State an information growth assumption before claiming a universal count relationship. | selected converse note, Section 10; repeated observation regression check |
+| F020 | An upper bound on the ordinary mean conditional divergence upper bounds T for lambda>1. | False. T is a logarithmic exponential mean; rare large conditional divergences can dominate it. | Use a uniform bound or a justified exponential moment bound, not an arithmetic mean. | selected converse note, Section 6; two point regression example |
+| F021 | The actual alpha_0 may be replaced by its upper budget in either direction of the selected converse. | False. That replacement weakens equation (6) safely but can make equation (7) invalid and even larger than one. | Check monotonicity separately in each direction and retain quantities from the same first test. | selected converse note, Section 5; explicit regression check |
 
 ## Attempted and reusable method ledger
 
@@ -159,6 +163,7 @@ is already treated in Vera Sigüenza and Esposito, *Finite Sample Bounds for Com
 | M011 | Markov operator / spectral Rényi rates | Useful for fixed HMMs. | Long-horizon controlled finite-state work after policy fixed. | R021 |
 | M012 | Common-input conditional Rényi divergence plus tilted-marginal chain rule | Exactly resolves the R026 non-iid divergence algebra and iterates over dependent paths. | Use as the primary information identity for singleton converse propagation; do not reinvent it. | R027–R029 |
 | M013 | Uniform conditional Rényi bound / adaptive composition | Replacing the exact tilted average by an essential supremum gives additive coarse control; mature analogue in Rényi differential privacy. | Use only when a uniform conditional bound is acceptable; record loss of exact branch-selected structure. | Mironov 2017; conditional Rényi audit note |
+| M014 | Substitute the source converses, retain actual branch reaches, cancel survival when converting to path risk, then invert uniform upper information limits. | Gives R033 to R037, with finite checks in both divergence directions. | Refine the retained selection term or specified information model; do not repeat the initial substitution as a new task. | selected converse note; source record `sources/2608.28068/SOURCE.md` |
 
 ## Open problem ledger
 
@@ -167,21 +172,22 @@ is already treated in Vera Sigüenza and Esposito, *Finite Sample Bounds for Com
 | O001 | Useful variance bound for action-integrated estimation on an explicit controlled class. | Must survive F001 and count branch integration. | Task 01 |
 | O002 | Explicit model-based bound for remaining-gain constant `K`. | Exact `G_t` everywhere would be circular computationally. | research plan |
 | O003 | General finite-horizon approximation algorithm with explicit work and accuracy. | No linear-horizon theorem established. | research plan |
-| O004 | Extend SB001 only where conditional/history dependence actually prevents direct use of the prior local theorem. | Do not rederive isolated iid theory. | later theorem work |
-| O005 | Connect local testing guarantees to minimax path risk. | F007/F008 block naive propagation. | UQ001 |
+| O004 | Extend SB001 only where conditional/history dependence actually prevents direct use of the prior local theorem. | Do not rederive isolated iid theory. R033 now supplies the branch selected converse substitution. | later theorem work; R033 |
+| O005 | Connect local testing guarantees to minimax path risk. | R034 to R036 give a restricted converse connection, not a full characterisation. F007/F008 still block naive propagation. | UQ001 |
 | O006 | Characterise minimax recursion separately for rectangular and coupled environment classes. | Respect F003/F004. | relation note |
 | O007 | Determine whether globally optimal testing policy has useful dynamic characterisation. | Compare with active testing; local optimality need not be global. | future work |
 | O008 | Complete novelty audit for predictable Hellinger-process identities. | R027–R032 are now mandatory prior art. | literature work |
-| O009 | Formalise positive reach and rectangular/coupled environments in manuscript. | Proposed but not yet authoritative manuscript text. | relation note |
-| O010 | Define useful controlled information process for history-dependent composite experiments. | Exact conditional Rényi chain rule is known; the question is which derived information quantity controls testing errors. | R027–R029 |
-| O011 | Theorem-level novelty audit against controlled sensing and composite adaptive testing. | `NO DIRECT MATCH LOCATED` is not novelty. | literature notes |
+| O009 | Formalise positive reach and rectangular/coupled environments in manuscript. | Proposed but not yet authoritative manuscript text. The approved zero based notation amendment is in the register; original manuscript retained. | relation note; `docs/NOTATION.md` |
+| O010 | Define useful controlled information process for history-dependent composite experiments. | Exact conditional Rényi chain rule is known; R033 to R036 now give one restricted converse use. | R027–R029; selected converse note |
+| O011 | Theorem-level novelty audit against controlled sensing and composite adaptive testing. | `NO DIRECT MATCH LOCATED` is not novelty. New applications have not received an independent novelty review. | literature notes |
 | O012 | Determine the mathematical effect of making the reported local hypothesis decision itself the control selecting the next experiment. | Do not silently reduce to ordinary sensing control. | future examples/theorems |
 | O013 | Construct coherent importance-sampling law for rare wrong paths. | Rectangular and coupled cases differ. | M009 |
-| O014 | Develop finite-sample pathwise error-propagation theorem for UQ001. | Local iid problem is solved; exact dependent Rényi algebra is also known. | O004/O005; R027–R029 |
-| O015 | Controlled finite-state Markov model as first tractable comparison class. | Preserve observed-state sufficiency and truth map. | R009/R019/R021 |
-| O016 | Use the **established** conditional Rényi chain rule under branch-selected tilted prefix laws to derive a finite-sample singleton converse recursion in terms of previous-node error quantities and future conditional information. | Supersedes the earlier wording that treated the R026 future-data term itself as the unknown object. Do not rederive R027–R029. | `notes/2026-09-16_conditional_renyi_chain_rule_literature_audit.md`; R026–R030 |
-| O017 | Lift the singleton converse recursion to history-dependent composite classes by taking the pairwise converse over a coherent environment class without illegal rectangularisation. | Hardest-pair reduction is available locally; global coupling must be preserved. | UQ001; F003/F004; R031 |
-| O018 | Determine whether decision-as-control plus repeated local error constraints yields finite-sample phenomena not captured by standard adaptive channel discrimination. | Hayashi solves a close simple asymptotic neighbour; Bergh et al. solve parts of a composite independent neighbour. | R030/R031; O012 |
+| O014 | Develop finite-sample pathwise error-propagation theorem for UQ001. | PARTIALLY ANSWERED on the converse side by R034 to R036 for the stated target path and coherent comparison; general truth patterns and matching achievability remain open. | O004/O005; R033 to R037 |
+| O015 | Controlled finite-state Markov model as first tractable comparison class. | Preserve observed-state sufficiency and truth map. A distinct correlated Gaussian illustration is now recorded in R037. | R009/R019/R021 |
+| O016 | Use the established conditional Rényi chain rule to obtain a singleton converse recursion in previous errors and future information. | PARTIALLY ANSWERED by R033 to R035: exact substitution in both directions, two node survival cancellation, and an all ones path converse with uniform information limits. Do not repeat this calculation. General sharp recursion remains open. Earlier unknown divergence algebra interpretation remains superseded by R027 to R029. | selected converse note, Sections 4 to 7; O019 |
+| O017 | Lift the singleton converse to coherent history dependent composite classes. | PARTIALLY ANSWERED by the coherent pair lower bound in R036/Section 8. This requires a suitable pair and policy uniform information limits, and is not an exact minimax recursion for arbitrary classes. | UQ001; F003/F004; R036 |
+| O018 | Determine whether repeated local decision constraints yield effects not captured by standard adaptive channel discrimination. | Hayashi and Bergh et al. remain required comparisons. A new novelty conclusion is not claimed from the present substitution. | R030/R031; O012 |
+| O019 | Review and sharpen the sample size converses while retaining the selected tilted reach and testing them against exact selected experiment error. | Start from R033 to R037. Necessary counts are not sufficient; root reliability and coherent pairs remain constraints. Independent proof review is still required. | selected converse note, Sections 6, 9 and 10 |
 
 ## Literature boundary: conditional Rényi bottleneck audit, 16 September 2026
 
@@ -198,6 +204,12 @@ The following broad ingredients are already established and are not novelty clai
 ## Cross-project boundary
 
 `Parallel-Hypothesis` remains separate. Its same-data path representation, local-error insufficiency, rectangular propagation, selected Rényi corrections and fixed-path converse/achievability recursions may be used as boundary checks but should not be rederived here.
+
+## Task record: selected converse and sample counts, 16 September 2026
+
+Work on `research/selected-renyi-converse-sample-complexity` began from `f7e6dab50b296b1a0f9faf21b6cb1a18911e2c92`. Overlapping inputs checked: SB001, R025 to R029, M013, O016/O017, and F003/F004/F007. Existing source records and topic bibliographies were checked first. The supplied paper was read for the exact two converses; the only new online check was its version record, not a repeated literature survey.
+
+The new calculation and its limitations are recorded in R033 to R037 and F019 to F021. Seventeen new finite test methods were added; all 47 methods, including the 30 existing methods, passed locally under Python 3.13.5. Existing source and test files were checked against their Git blob hashes before execution. No independent mathematical review or remote CI run is claimed. Details and hashes: `results/2026-09-16_selected_converse_checks.json`.
 
 ## End-of-task update rule
 

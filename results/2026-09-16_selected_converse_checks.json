@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-16",
+  "repository": "esig626/sequential_testing",
+  "branch": "research/selected-renyi-converse-sample-complexity",
+  "base_commit": "f7e6dab50b296b1a0f9faf21b6cb1a18911e2c92",
+  "command": "python -m unittest discover -s tests -v",
+  "python": "3.13.5",
+  "test_methods": 47,
+  "existing_methods": 30,
+  "new_methods": 17,
+  "failures": 0,
+  "errors": 0,
+  "return_code": 0,
+  "wall_seconds": 0.6993853840000384,
+  "remote_ci": "not run",
+  "independent_mathematical_review": false,
+  "validation_type": "finite deterministic consistency checks and exact finite NP comparisons; not proof or a performance study",
+  "checked_orders": [1.125, 1.5, 2.0, 4.0],
+  "new_test_file": "tests/test_selected_converse.py",
+  "existing_git_blobs_verified": {
+    "src/__init__.py": "bdd490e3dc630f39466910089fd605aa6b0281f7",
+    "src/controlled_renyi.py": "c5e961c180d1761a79c9d3b3e5c4fbc58df39851",
+    "tests/test_controlled_renyi.py": "2270a49a5491977a18fc8fee9fa25066aebb97d1"
+  },
+  "sha256": {
+    "src/__init__.py": "4b887b10d121fad3f8f359cac014147c63d25342562cc3b90a54080251c9c667",
+    "src/controlled_renyi.py": "0104f0860ede4d90f333590f6069b750d232b61a24c8c64b96594b39d1f31a95",
+    "tests/test_controlled_renyi.py": "c4c9aa8bba9a21dd86853c2515c814e48404fb989bc311cfacc7c02ae75c77c1",
+    "tests/test_selected_converse.py": "949789888f53e1fd57b69ee3a939f676eeacf6e9bd3e8f8eb16b3b6c19234a62",
+    "notes/2026-09-16_selected_renyi_converse_sample_complexity.md": "82fbd541cb1cfe12b2174599dad9bc01c21b265d493b07747198602bf2bb63a8"
+  },
+  "gaussian_example": {
+    "mean_gaps": [1, 1],
+    "standard_deviations": [1, 1],
+    "correlations": [0.6, 0.6],
+    "type_I_budgets": [0.05, 0.05],
+    "target_path_error": 0.1,
+    "required_information": 4.507782842774305,
+    "necessary_total_samples": 31,
+    "root_samples": 20,
+    "necessary_new_samples": 11,
+    "bound_at_total_30": 0.10107372125552401,
+    "bound_at_total_31": 0.08452053241686154,
+    "sufficiency_claim": false
+  }
+}

@@ -15,6 +15,8 @@ If an existing source already answers the research question, use that source rat
 
 The motivating article is documented in [2607.27088/SOURCE.md](2607.27088/SOURCE.md), with a direct [author PDF shortcut](2607.27088/article.url). General references are recorded in [references.bib](references.bib). Topic-specific source records and bibliographies may live in their own subdirectories, for example `conditional_renyi_chain_rule/`.
 
-This directory contains records and links, not archived bytes of third-party articles unless appropriate republication permission has been established. No PDF checksum is claimed for linked-only sources.
+The exact user supplied converse source for SB001 and R033 to R037 is now documented in [2608.28068/SOURCE.md](2608.28068/SOURCE.md), with a dedicated [bibliography](2608.28068/references.bib). This records version 1, the consulted equations and the uploaded PDF checksum. The later online version was not silently substituted for the requested source.
+
+This directory contains records and links, not archived bytes of third-party articles unless appropriate republication permission has been established. No PDF checksum is claimed for linked-only sources; a checksum explicitly labelled as belonging to a consulted upload identifies that upload, not a mirrored file.
 
 For new references record authors, title, version, access date, reading depth, relevant theorem or section, what the source solves, what it does not solve, and which ledger ID it supports or changes. An abstract or bibliographic check must not be described as a full proof review. Do not mirror third-party full texts without appropriate permission.
