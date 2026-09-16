@@ -1,6 +1,6 @@
 # Research instructions
 
-Read `sequential_testing.tex`, `RELATION_TO_PARALLEL_HYPOTHESIS.md`, `CURRENT_STATUS.md`, `docs/NOTATION.md`, `docs/RENYI_APPROXIMATION_PLAN.md`, and `docs/CLAIMS.md` before scientific work.
+Read `manuscript/sequential_testing.tex`, `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md`, `CURRENT_STATUS.md`, `docs/NOTATION.md`, `docs/RENYI_APPROXIMATION_PLAN.md`, and `docs/CLAIMS.md` before scientific work.
 
 ## Preserve the model
 
