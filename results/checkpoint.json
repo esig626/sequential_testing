@@ -4,7 +4,7 @@
   "repository": "esig626/sequential_testing",
   "branch": "research/xing-2025-literature-audit",
   "source_base_commit": "6a3b83f393eeee14a31be48a00350565d40085d1",
-  "milestone": "Xing 2025 and controlled sequential testing literature audit",
+  "milestone": "Xing 2025 literature audit and solved single-node base case guardrail",
   "completed": [
     "read Xing SS-2025-0042 accepted paper",
     "read Xing SS-2025-0042 supplementary material",
@@ -14,7 +14,9 @@
     "search non-iid and dependent sequential testing literature",
     "search finite-sample active testing and hidden Markov Renyi literature",
     "update mandatory research ledger and claims register",
-    "add primary source record and bibliography entries"
+    "add primary source record and bibliography entries",
+    "record isolated iid single-node composite finite-sample testing as solved base case SB001",
+    "forbid duplicate rederivation of the single-node local achievability and converse problem"
   ],
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
@@ -24,7 +26,16 @@
     "path": "docs/RESEARCH_LEDGER.md",
     "mandatory_read": true,
     "must_update_after_substantive_research": true,
-    "purpose": "prevent duplicated derivations, failed routes, code and literature work"
+    "purpose": "prevent duplicated derivations, failed routes, code and literature work",
+    "solved_base_case": "SB001",
+    "ultimate_question": "UQ001"
+  },
+  "solved_base_case": {
+    "id": "SB001",
+    "problem": "isolated iid single-node finite-sample composite binary hypothesis testing",
+    "local_object": "optimal worst-case Type II error under a Type I constraint",
+    "source": "Vera Siguenza and Esposito, Finite Sample Bounds for Composite Hypothesis Testing",
+    "instruction": "import the prior achievability and converse theory; do not rederive it unless an assumption is explicitly changed or independent verification is requested"
   },
   "literature_audit": {
     "primary_paper": "Yiming Xing, Sequential Multiple Testing of Multiple Composite Hypotheses: an Asymptotic Optimality Theory with General Information Functions",
@@ -57,8 +68,9 @@
     "stochastic_performance_study": false
   },
   "ledger_range_after_update": {
-    "results": "R001-R024",
-    "failures": "F001-F016",
+    "solved_base_cases": "SB001",
+    "results": "R001-R025",
+    "failures": "F001-F017",
     "methods": "M001-M011",
     "open_problems": "O001-O015"
   },
@@ -69,7 +81,7 @@
     "action integration implementation",
     "controlled information function definition",
     "model specific useful variance bound",
-    "finite-sample bridge from path Renyi quantities to composite path risk",
-    "uniform composite and policy guarantees"
+    "finite-sample bridge from nodewise error guarantees to composite path risk",
+    "uniform sequential composite and policy guarantees"
   ]
 }
