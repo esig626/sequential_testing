@@ -22,6 +22,32 @@ Before starting scientific work:
 
 Never delete an old result or failure merely because it is superseded. Mark it `SUPERSEDED` and point to the replacement. A failed approach is research output and must remain visible.
 
+## Ultimate research question
+
+### UQ001 — How do the errors propagate?
+
+At every reachable node, the primary object of interest is the local composite testing error tradeoff. For a local Type I budget `epsilon_t`, the fundamental quantity is
+
+\[
+\beta_t^\star(\varepsilon_t\mid h_{t-1}),
+\]
+
+the smallest worst case Type II error achievable at that node under the prescribed Type I constraint. Particular tests are secondary: they are used only as constructions for achievability, while converse results describe what no test can beat.
+
+The ultimate goal of this project is to understand how these nodewise errors propagate through the sequential, action selected path when an earlier reported decision changes the node reached and therefore the future statistical problem.
+
+The central target is therefore to obtain both:
+
+1. **Achievability:** rigorous upper bounds showing how attainable local Type I and Type II error guarantees imply an attainable global sequential error guarantee, such as a bound on
+   \[
+   \mathbb P\!\left(\bigcup_{t=1}^T\{A_t\neq\Theta_t\}\right).
+   \]
+2. **Impossibility / converse:** rigorous lower bounds showing what global reliability cannot be achieved, or what local error performance is necessarily required, regardless of the tests used at the nodes.
+
+The sequential dependence matters because an error at node `t` changes which node and which composite testing problem is encountered next. Therefore the local errors cannot in general be propagated by assuming independence, multiplying marginal correctness probabilities, or simply adding nominal node errors.
+
+All Rényi quantities, path divergences, information clocks, controlled sensing analogies, numerical algorithms, and policy constructions are tools towards answering UQ001. They are not the ultimate objective of the project.
+
 ## Status vocabulary
 
 * `ESTABLISHED`: supported by an external source or a previously established theorem with applicable hypotheses.
