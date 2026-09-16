@@ -6,6 +6,8 @@ The repository is a research workspace for finite-sample sequential composite te
 
 The mandatory research ledger is `docs/RESEARCH_LEDGER.md`. Its ultimate question `UQ001` is how nodewise Type I and Type II error tradeoffs propagate into global sequential error. `SB001` records the isolated iid single-node finite-sample composite problem as solved prior work that must not be rederived.
 
+The repository now also enforces a permanent **ledger-first, source-first protocol**. `docs/RESEARCH_LEDGER.md` is the controlling research document and must be consulted before every material research decision, not merely at task start. Before any new external literature search, Codex must inspect the ledger, `sources/README.md`, existing bibliographies, relevant `sources/*/SOURCE.md` records, literature notes, and repository search results. A redundant external search must not be launched when the repository already contains the relevant result. Any new useful source must be recorded in `sources/` and linked back into the ledger before the task is complete.
+
 ## Literature status
 
 The Xing SS-2025-0042 audit established that controlled sensing, adaptive observations, composite controlled sensing, non-iid sequential testing, controlled Markov observations and nonlinear information clocks are all established neighbouring areas. No direct theorem was located for the complete model in this repository; this remains `NO DIRECT MATCH LOCATED`, not a novelty claim.
@@ -38,10 +40,10 @@ The closest checked testing neighbours are informative but do not close this gap
 * Han 2000 treats arbitrary dependent general sources in simple asymptotic testing.
 * Jacod and Dzhaparidze–Spreij–Valkeila provide filtered Hellinger/information-process frameworks, including randomized filtered experiments, but not the finite-sample nodewise composite error-propagation theorem sought here.
 
-The ledger now records these boundaries through `R032`, `F018`, `M013`, and `O018`.
+The ledger records these boundaries through `R032`, `F018`, `M013`, and `O018`.
 
 ## Validation
 
-No code was changed in this literature audit, so the earlier 30 local regression tests were not rerun as evidence for this task. No remote CI execution or stochastic performance study is claimed.
+No code was changed in these literature and research-protocol updates, so the earlier 30 local regression tests were not rerun as evidence for this task. No remote CI execution or stochastic performance study is claimed.
 
 The next mathematical focus is `O016`: derive the singleton finite-sample converse recursion using the established conditional Rényi chain rule, without rediscovering that chain rule or the branch-selection correction.
