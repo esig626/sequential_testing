@@ -2,7 +2,7 @@
 
 A research workspace for new observations on decision trees, where each statistical decision can change the law of future data.
 
-The model and fixed notation are in [sequential_testing.tex](sequential_testing.tex). The [relation to Parallel-Hypothesis](RELATION_TO_PARALLEL_HYPOTHESIS.md) explains which ideas transfer from the separate same data project. Both original scientific files are preserved unchanged by the September 2026 workspace recovery.
+The model and fixed notation are in [sequential_testing.tex](manuscript/sequential_testing.tex). The [relation to Parallel-Hypothesis](manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md) explains which ideas transfer from the separate same data project. Both original scientific files are preserved unchanged by the September 2026 workspace recovery.
 
 ## Start here
 
