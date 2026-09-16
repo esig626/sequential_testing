@@ -3,17 +3,25 @@
   "date": "2026-09-16",
   "repository": "esig626/sequential_testing",
   "source_base_commit": "a7765a057b1879dc12a3fc66359e5f2b9a52ebd8",
-  "milestone": "workspace recovery and initial controlled identities",
+  "milestone": "workspace recovery, initial controlled identities, and mandatory research ledger",
   "completed": [
     "read all three existing files",
     "read motivating article",
     "adapt plan and notation",
     "derive controlled identities",
-    "run finite reference checks"
+    "run finite reference checks",
+    "create mandatory results failures methods and open problems research ledger",
+    "require ledger review before every scientific task through AGENTS.md"
   ],
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
     "manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md": "5be6b8271b4565b959381e23a2cb015c0e9c588d"
+  },
+  "research_ledger": {
+    "path": "docs/RESEARCH_LEDGER.md",
+    "mandatory_read": true,
+    "must_update_after_substantive_research": true,
+    "purpose": "prevent duplicated derivations, failed routes, code and literature work"
   },
   "validation": {
     "command": "python -m unittest discover -s tests -v",
