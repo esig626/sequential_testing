@@ -16,10 +16,12 @@ Detailed synthesis: `notes/2026-09-16_xing_2025_and_controlled_testing_literatur
 
 Source record: `sources/SS-2025-0042/SOURCE.md`.
 
-The research ledger has been expanded through R024, F016, M011 and O015. Any subsequent research must use these entries rather than rediscover the controlled sensing literature or repeat novelty claims ruled out by the audit.
+The ledger now also records `SB001`: the isolated iid single-node finite-sample composite binary testing problem is a solved base case from the prior Vera Sigüenza and Esposito paper *Finite Sample Bounds for Composite Hypothesis Testing*. Its local achievability and converse theory must be imported rather than rederived. The new project begins with what changes once those local error guarantees live on an action-selected, history-dependent sequential path, and ultimately with how the local errors propagate.
 
-The repository's own new derivations have still not received independent mathematical review. The useful model specific variance bound, a general approximation algorithm, uniform composite guarantees, policy optimisation, the connection from pairwise Rényi quantities to path risk, and a theorem level novelty audit remain research tasks.
+The research ledger has therefore been expanded through R025, F017, M011 and O015, in addition to `SB001`. Any subsequent research must use these entries rather than rediscover the single-node composite theory, the controlled sensing literature, or novelty claims ruled out by the audit.
 
-The next executable technical task remains `prompts/01_controlled_renyi_foundations.md`, but its literature stage must now start from R014 to R024 and F011 to F016. In particular, future policy work must distinguish the repository's reported decision as control from the separate sensing actions used in standard active hypothesis testing.
+The repository's own new derivations have still not received independent mathematical review. The useful model specific variance bound, a general approximation algorithm, uniform sequential composite guarantees, policy optimisation, the connection from nodewise guarantees to path risk, and a theorem level novelty audit remain research tasks.
 
-Validation details remain in `results/VALIDATION.md`. No code was changed in this literature audit, so the earlier 30 passing local tests were not rerun as evidence for this task. No remote CI execution or stochastic performance study is claimed.
+The next executable technical task remains `prompts/01_controlled_renyi_foundations.md`, but any work on local error bounds must first check `SB001` and may proceed only if a sequential or dependence assumption genuinely changes the single-node theorem. Future policy work must also distinguish the repository's reported decision as control from the separate sensing actions used in standard active hypothesis testing.
+
+Validation details remain in `results/VALIDATION.md`. No code was changed in this literature audit or in the `SB001` clarification, so the earlier 30 passing local tests were not rerun as evidence for this task. No remote CI execution or stochastic performance study is claimed.
