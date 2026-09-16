@@ -6,7 +6,7 @@ The model and fixed notation are in [sequential_testing.tex](manuscript/sequenti
 
 ## Start here
 
-Read [AGENTS.md](AGENTS.md), [CURRENT_STATUS.md](CURRENT_STATUS.md), and the [Rényi approximation plan](docs/RENYI_APPROXIMATION_PLAN.md). The first executable brief is [Task 01](prompts/01_controlled_renyi_foundations.md).
+Read [AGENTS.md](AGENTS.md), the mandatory [research ledger](docs/RESEARCH_LEDGER.md), [CURRENT_STATUS.md](CURRENT_STATUS.md), and the [Rényi approximation plan](docs/RENYI_APPROXIMATION_PLAN.md) before starting scientific work. The ledger is the persistent index of results, failures, counterexamples, attempted methods and open problems, and exists specifically to prevent duplicated research. The first executable brief is [Task 01](prompts/01_controlled_renyi_foundations.md).
 
 The approximation project evaluates the manuscript's induced path laws under a fixed common policy. It preserves the order lambda and the direction D_lambda(Q||P). Independence without identical distribution still gives additivity; action dependent conditional laws are the substantive target.
 
@@ -16,10 +16,11 @@ The current work derives controlled predictable gap identities, connects them to
 
 | Location | Contents |
 | --- | --- |
+| [Research ledger](docs/RESEARCH_LEDGER.md) | Mandatory do not duplicate index of results, failures, methods and open problems |
 | [Research plan](docs/RENYI_APPROXIMATION_PLAN.md) | Scope, model specific routes, accuracy, cost and stages |
 | [Working derivations](notes/2026-09-16_controlled_renyi_identities.md) | Prefix accumulation, branch selection, estimator and variance algebra |
 | [Notation](docs/NOTATION.md) | Existing symbols and carefully separated additions |
-| [Claims register](docs/CLAIMS.md) | Established facts, local derivations, obstructions and open tasks |
+| [Claims register](docs/CLAIMS.md) | Current claim status; the ledger additionally preserves research history and failed routes |
 | [Integration record](docs/INTEGRATION.md) | Files read, preserved hashes and changes from the earlier plan |
 | `src/` and `tests/` | Small finite controlled reference calculations |
 | `experiments/` and `results/` | Experiment specification, validation and checkpoint |
