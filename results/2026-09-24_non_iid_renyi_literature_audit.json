@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-24",
+  "repository": "esig626/sequential_testing",
+  "branch": "research/non-iid-renyi-literature-audit",
+  "base_commit": "adc0b7784f61569308f70244bb4e639c1f396415",
+  "task": "User requested a deep literature search on computing and controlling Renyi divergence without iid data, with Markdown results and compiled references",
+  "repository_review": "sources/non_iid_renyi/REVIEW.md",
+  "repository_bibliography": "sources/non_iid_renyi/references.bib",
+  "reference_records": 30,
+  "limited_leads": ["S29", "S30"],
+  "source_depth": "Individual inspection depth is recorded for every reference. Selected primary theorem statements and assumptions were checked; not every proof was independently reviewed.",
+  "main_methods": [
+    "exact tilted chain rule",
+    "finite state Markov matrix products and finite length spectral corrections",
+    "positive operators and multiplicative drift",
+    "observed hidden Markov likelihood and filtering methods",
+    "adaptive conditional Renyi composition and cumulative path budgets",
+    "information based dependent concentration",
+    "risk sensitive variational reference comparison",
+    "endpoint shifted composition and contraction",
+    "Gaussian covariance calculations",
+    "Feynman-Kac particle approximation and variational estimation"
+  ],
+  "new_ledger_results": ["R045", "R046", "R047", "R048", "R049", "R050", "R051", "R052"],
+  "new_failure_guardrails": ["F026", "F027", "F028"],
+  "next_task": "O022",
+  "key_boundaries": [
+    "finite sample validity is compatible with averaging over histories",
+    "a rate without a remainder is not a finite horizon upper bound",
+    "endpoint divergence is not full retained transcript divergence",
+    "particle count is not data sample count",
+    "a restricted variational supremum is not an upper divergence bound",
+    "a necessary count is not a sufficient count",
+    "algebraic translations are distinguished from numbered source theorems"
+  ],
+  "local_deliverables": {
+    "RENYI_NON_IID_LITERATURE_REVIEW.md": "39962b6ffd558c5f3a54c1f9eda12508dcaca87be85c944c06f784a08b54963b",
+    "REFERENCES.md": "667e47068c8218cc7a2bc29e1958d4f9bca30fc1c0db77cd30e15be0d917377c",
+    "references.bib": "50c1d8fb2731bd41522f16db3b5736f4fb2c4494cd72b73a1d85f2d579eabbca",
+    "source_audit.json": "10f74f57bdfd50794d9b813dd55613e2f50af7ca3a91735fb7fa686362a612e7"
+  },
+  "local_file_checks": {
+    "reference_count": 30,
+    "unique_bibtex_keys": true,
+    "main_citation_ids_resolve": true,
+    "bibtex_braces_balanced": true,
+    "math_delimiters_balanced": true,
+    "specialised_bibtex_parser_used": false,
+    "latex_compiled": false
+  },
+  "repository_edition_matches_local_report_byte_for_byte": false,
+  "edition_note": "The repository review is a shorter source checked edition; the conversation deliverables contain the extended exposition and separate annotated bibliography.",
+  "production_code_changed": false,
+  "original_manuscript_changed": false,
+  "user_notes_changed": false,
+  "research_tests_rerun": false,
+  "new_numerical_experiments": false,
+  "remote_ci": "not run",
+  "independent_mathematical_review": false,
+  "exhaustive_novelty_claim": false,
+  "third_party_full_texts_mirrored": false
+}
