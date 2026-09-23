@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "date": "2026-09-23",
+  "date": "2026-09-24",
   "repository": "esig626/sequential_testing",
-  "branch": "research/selected-renyi-converse-sample-complexity",
-  "source_base_commit": "1409d7af0c4b33d98fcec73bb54eb53fec54e910",
-  "previous_checkpoint_commit": "1409d7af0c4b33d98fcec73bb54eb53fec54e910",
-  "milestone": "nonuniform bounds for selected dependent information",
+  "branch": "research/non-iid-renyi-literature-audit",
+  "source_base_commit": "adc0b7784f61569308f70244bb4e639c1f396415",
+  "previous_branch": "research/selected-renyi-converse-sample-complexity",
+  "milestone": "Source checked audit of computing and controlling Renyi divergence beyond iid observations",
   "research_ledger": {
     "path": "docs/RESEARCH_LEDGER.md",
     "mandatory_read": true,
@@ -17,82 +17,65 @@
     "new_useful_sources_must_be_recorded": true,
     "ultimate_question": "UQ001",
     "solved_base_case": "SB001",
-    "latest_result": "R043",
-    "latest_failure_guardrail": "F024",
-    "latest_method": "M016",
-    "latest_open_problem": "O020"
+    "latest_result": "R052",
+    "latest_failure_guardrail": "F028",
+    "latest_method": "M017",
+    "latest_open_problem": "O022"
   },
   "preserved_scientific_blobs": {
     "manuscript/sequential_testing.tex": "64200d14cfdcd778c201ca5f7cd7fcd45044e309",
     "manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md": "5be6b8271b4565b959381e23a2cb015c0e9c588d"
   },
-  "user_working_notes_modified": false,
   "notation": {
     "current_scalar": "d_{lambda,1}(n,m;phi_0)",
     "old_name_for_same_scalar": "T_{lambda,1}",
     "pointwise_conditional_divergence": "write in full; do not reuse d_{lambda,1}(x)",
     "root": "P_0 and Q_0 denote single observation laws; current root is iid",
-    "new_data": "arbitrary coherent conditional kernels; no iid assumption"
+    "new_data": "coherent conditional kernels without iid assumptions"
   },
-  "new_results": {
-    "note": "notes/2026-09-23_nonuniform_selected_information_bounds.md",
-    "ids": ["R038","R039","R040","R041","R042","R043"],
-    "moment_bound": "optimised generalised Holder bound from averaged higher order conditional likelihood ratio moments",
-    "original_order_bound": "local integral comparison functions for the existing backward moment recursion",
-    "explicit_example": "Gaussian feedback with distinct autoregression coefficients and unbounded pointwise conditional divergence",
-    "uniformity_obstruction": "a Type I upper budget alone allows selection of arbitrarily rare high information histories",
-    "independent_review": false,
-    "novelty_claim": false,
-    "general_efficiency_claim": false,
-    "exact_minimax_sample_complexity_claim": false,
-    "achievability_claim": false
-  },
-  "source_verification": {
-    "existing_source_record": "sources/conditional_renyi_chain_rule/SOURCE.md",
-    "verification_record": "sources/conditional_renyi_chain_rule/VERIFICATION_2026-09-23.md",
-    "reference": "Polyanskiy and Wu, Section 7.12, equations 7.77 and 7.78",
-    "reading_depth": "parsed primary source equation text",
-    "screenshots": "attempted, fetch failed",
-    "new_broad_literature_search": false,
+  "literature_audit": {
+    "review": "sources/non_iid_renyi/REVIEW.md",
+    "bibliography": "sources/non_iid_renyi/references.bib",
+    "verification_record": "results/2026-09-24_non_iid_renyi_literature_audit.json",
+    "reference_records": 30,
+    "limited_leads": ["S29", "S30"],
+    "reading_depth": "Individually specified; selected primary results and assumptions inspected, not every proof independently reviewed",
+    "longer_conversation_artifacts": ["RENYI_NON_IID_LITERATURE_REVIEW.md", "REFERENCES.md", "references.bib", "source_audit.json"],
+    "repository_edition_is_shorter": true,
+    "new_result_ids": ["R045", "R046", "R047", "R048", "R049", "R050", "R051", "R052"],
+    "new_guardrails": ["F026", "F027", "F028"],
+    "source_theorems_claimed_as_new": false,
     "full_text_mirrored": false
   },
   "validation": {
-    "record": "results/2026-09-23_nonuniform_information_verification.json",
-    "command": "python check_general_bounds.py",
-    "test_methods": 15,
-    "failures": 0,
-    "errors": 0,
-    "python": "3.13.5",
-    "numpy": "2.3.5",
-    "scipy": "1.17.0",
-    "scope": "standalone local deterministic enumeration and Gaussian integration checks",
-    "existing_repository_suite_rerun": false,
+    "scope": "Structural reference and file checks; source statement and assumption inspection",
+    "unique_reference_and_bibtex_ids": true,
+    "local_math_delimiters_and_bibtex_braces_checked": true,
+    "research_tests_rerun": false,
+    "new_numerical_experiments": false,
     "production_code_changed": false,
+    "original_manuscript_changed": false,
+    "user_working_notes_modified": false,
     "remote_ci": "not run",
     "independent_mathematical_review": false,
-    "standalone_script": "supplied in the conversation proof and checks attachment"
+    "exhaustive_novelty_claim": false
   },
-  "prior_results": {
-    "converse_note": "notes/2026-09-16_selected_renyi_converse_sample_complexity.md",
-    "source_converse_record": "sources/2608.28068/SOURCE.md",
-    "historical_validation_record": "results/2026-09-16_selected_converse_checks.json",
-    "historical_test_methods": 47,
-    "historical_results_represented_as_new_run": false,
-    "previous_literature_audits_preserved": true
+  "preserved_prior_work": {
+    "selected_converse_note": "notes/2026-09-16_selected_renyi_converse_sample_complexity.md",
+    "nonuniform_note": "notes/2026-09-23_nonuniform_selected_information_bounds.md",
+    "reference_comparison_note": "notes/2026-09-23_projection_assisted_selected_bound.md",
+    "original_converse_source": "sources/2608.28068/SOURCE.md",
+    "historical_checks": ["results/2026-09-16_selected_converse_checks.json", "results/2026-09-23_nonuniform_information_verification.json"],
+    "historical_checks_represented_as_new_runs": false,
+    "earlier_source_audits_preserved": true
   },
-  "ledger_range_after_update": {
-    "solved_base_cases": "SB001",
-    "results": "R001-R043",
-    "failures": "F001-F024",
-    "methods": "M001-M016",
-    "open_problems": "O001-O020"
-  },
-  "next_task": "O020: review the nonuniform bounds and connect them to the existing error converse for specified kernels, retaining the first test or justified root power restrictions; do not redo the uniform cap implication or the chain rule",
-  "open": [
-    "independent review of the nonuniform constructions",
-    "sharpness and integrability beyond the sufficient higher moment bound",
-    "tractable comparison functions for further specified model classes",
-    "composite policy uniform conclusions under justified constraints",
-    "matching achievability and exact minimax sample complexity"
+  "next_task": "O022: apply Watanabe-Hayashi finite length Markov bounds or the fixed pair adaptive Renyi filter to the selected future experiment after proving the sufficient observed state or cumulative budget; retain initial selection and finite length corrections",
+  "remaining_boundaries": [
+    "limiting rates require finite horizon evaluation or remainders",
+    "endpoint bounds do not control full retained transcript divergence",
+    "variational reference optimisation still includes an exponential moment",
+    "uniformity over all root tests requires justified restrictions",
+    "necessary sample count exclusions do not establish sufficiency",
+    "general composite minimax error propagation and matching achievability remain separate problems"
   ]
 }
