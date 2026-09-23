@@ -1,46 +1,47 @@
 # Current research status
 
-Date: 16 September 2026.
-Current branch: `research/selected-renyi-converse-sample-complexity`.
-Branch base: `f7e6dab50b296b1a0f9faf21b6cb1a18911e2c92` on `research/xing-2025-literature-audit`.
+Date: 23 September 2026.
+Branch: `research/selected-renyi-converse-sample-complexity`.
+This task started from `1409d7af0c4b33d98fcec73bb54eb53fec54e910`.
 
-The repository studies how local Type I and Type II errors propagate when each reported randomised decision selects the next dependent experiment. The governing question remains UQ001. The original `manuscript/sequential_testing.tex` and `manuscript/RELATION_TO_PARALLEL_HYPOTHESIS.md` have not been changed by this task.
+The governing question remains UQ001: how local Type I and Type II errors propagate when reported randomised decisions select future dependent experiments. The controlling document before every material research decision is `docs/RESEARCH_LEDGER.md`. Check its entries and the existing source library before any new search.
 
-## Current milestone: converse substitution and necessary sample counts
+## Current milestone: bounds without a uniform cap over histories
 
-The exact uploaded source was read: Vera-Sigüenza and Esposito, *Finite Sample Bounds for Composite Hypothesis Testing*, arXiv:2608.28068v1. Theorem 1 equation (4), Appendix A-A, and equation (48) provide the two converse directions used here. A dedicated versioned source record and bibliography now live in `sources/2608.28068/`. The online version record was checked, but the later version was not silently substituted for the upload.
+New note: `notes/2026-09-23_nonuniform_selected_information_bounds.md`.
 
-The new derivation is `notes/2026-09-16_selected_renyi_converse_sample_complexity.md`. It records:
+R038 constructs a general upper bound using generalised Holder and averaged higher order moments of each conditional observation likelihood ratio. These averages preserve dependence on the old data and the new prefix. No iid assumption or uniform history cap is imposed. Finiteness of the specified higher moments is sufficient, not necessary; the bound is not automatically efficient to evaluate.
 
-* R033: explicit substitution of the selected joint Rényi expression into both source converses, with the first rule fixed and the correct tilt in each direction;
-* R034: conversion to the (1,1) path error and cancellation of the explicit alternative branch survival factor;
-* R035: a converse for successive all ones decisions under a coherent null comparison and uniform conditional information limits;
-* R036: necessary sample size inversions in n and m, including the limited coherent pair implication for composite risk;
-* R037: an explicit correlated Gaussian model with dependence within both blocks and across them, a closed form order optimisation, and a necessary sample count example.
+R039 gives a local integral comparison form of the existing backward moment recursion, at the original order above one. Functions that satisfy the stated one observation integral inequalities dominate the remaining moment. They may be unbounded if their initial selected average is finite. This is a constructive condition to verify from the kernels, not an assertion that suitable finite functions exist in every model.
 
-These are derived results with finite checks, NOT independently reviewed theorems or novelty claims. The sample counts are necessary conditions, not sufficient counts. This is converse work only. General truth maps, exact composite minimax tradeoffs, optimal policy design and matching achievability remain unresolved here.
+R040 solves the conditional moment recursion in an illustrative Gaussian feedback model with distinct autoregression coefficients. Its conditional divergences are unbounded over histories, unlike the constant conditional divergence example R037. Yet the selected contribution and an explicit bound containing n and m can be finite. The scalar quadratic recursion, Gaussian integrability thresholds, and first test dependence are retained.
 
-The main useful cancellation is that beta_0+(1-beta_0)beta_1 removes the explicit division by 1-beta_0 in the selected local converse. The first decision still affects its actual alpha_0, the tilted branch reach, and the conditional information. Uniform upper information limits allow a bound independent of the particular first test; ordinary average divergence does not provide such an upper limit when lambda>1.
+R041 proves a limitation on uniformity over first tests: for fixed kernels, taking the supremum over every positive reach first test satisfying only the Type I upper budget recovers the least bound on the pointwise conditional divergence outside a null set for the root tilt. A finite bound for one first test need not be uniform over all of them.
 
-The root is indexed zero in this calculation. Z_t denotes the past before node t; h remains reserved for the log likelihood ratio. The composite class notation is C_t^(0), C_t^(1). The amendment in `docs/NOTATION.md` records the user approved changes while retaining the old manuscript conventions for historical reference.
+R042 records monotonicity in the number of new observations only for a coherent prefix process with n and the first rule fixed. R043 gives the elementary lower tilted reach bound from actual root power, which can be used when a lower power requirement is imposed.
 
-## Validation
+The ledger now extends through R043, F024, M016 and O020. New claims are derived and not independently reviewed. Standard Holder inequalities, Gaussian integration, the chain rule and the original backward recursion are not claimed as novel.
 
-`python -m unittest discover -s tests -v` passed all 47 methods locally under Python 3.13.5: the 30 existing methods plus 17 new ones. Existing source and test files were verified against their Git blob hashes before running. No production source file was changed.
+## Current notation
 
-The new checks cover selected normalisation, genuine conditional dependence, both divergence orientations, source converse substitution against exact finite NP errors, survival cancellation, uniform information limits, a four stage path bound, zero reach, the repeated observation obstruction, invalid average information substitution, the opposite direction budget error, covariance inversion, and the Gaussian count calculation.
+The user now writes `d_{lambda,1}(n,m;phi_0)` for the scalar logarithmic selected tilted average that the 16 September note called `T_{lambda,1}`. Do not also use `d_{lambda,1}(x)` for pointwise conditional divergence. Write the pointwise divergence explicitly. Root laws are P_0^(tensor n), Q_0^(tensor n) in the current calculation. Every new symbol must be defined before use. The uploaded working notes were deliberately left unchanged.
 
-Validation record and file hashes: `results/2026-09-16_selected_converse_checks.json`.
-No independent mathematical review, remote CI run or broad stochastic performance study is claimed.
+## Validation and source reading
 
-## What was already available and remains an input
+Fifteen standalone local deterministic methods passed under Python 3.13.5, NumPy 2.3.5 and SciPy 1.17.0. They check finite dependent enumeration, Holder weights, exact forward and backward recursions, the Gaussian recursion against full joint Gaussian integration, selected Gaussian bounds and the stated obstructions. They do not constitute a rerun of the old 47 method suite. No production code, original manuscript or user note was changed.
 
-SB001/R025 record the original isolated iid composite testing theory as solved prior work. R026 is the two node selected Rényi decomposition. R027 to R029 identify its conditional term and chain rule as established literature. None was presented as a new theorem in this task.
+Record: `results/2026-09-23_nonuniform_information_verification.json`. A complete standalone verification script and an extended derivation were also supplied as a conversation attachment. No remote CI, independent mathematical review or stochastic performance claim is made.
 
-The earlier Xing audit and conditional Rényi audit remain in their dated notes and in `sources/SS-2025-0042/` and `sources/conditional_renyi_chain_rule/`. Controlled sensing, composite controlled testing, temporal dependence, Markov memory and nonlinear information accumulation remain established neighbouring literature. The previous targeted searches found no exact match to the complete project formulation; that is not a novelty proof for the present results.
+The existing Polyanskiy and Wu reference was checked directly at equations (7.77) and (7.78), using parsed primary source text. Screenshot fetches failed. This was a targeted verification after reading the source library, not a new broad literature survey. See `sources/conditional_renyi_chain_rule/VERIFICATION_2026-09-23.md`. No third party full text was mirrored.
 
-## Research protocol and next decision
+## Preserved earlier milestones
 
-`docs/RESEARCH_LEDGER.md` remains the controlling document before every material research decision. Inspect its entries and the existing source library before any new search. Newly useful references and failures must be recorded immediately rather than retained only in chat.
+SB001/R025 record the prior isolated iid composite testing theory. R026 to R029 give the selected decomposition and its identification with the established conditional Renyi chain rule. R033 to R037 contain the source converse substitution, survival cancellation, restricted path converse and necessary sample size relationships under stated information assumptions. The full earlier note remains `notes/2026-09-16_selected_renyi_converse_sample_complexity.md`, with source records under `sources/2608.28068/` and the historical validation under `results/2026-09-16_selected_converse_checks.json`.
 
-The ledger now extends through R037, F021, M014 and O019. O016 and O017 are partially answered within the precise scopes above. Next: independently review the new derivation and sharpen the necessary counts by retaining the selected tilted reach, checking root reliability, and comparing with exact selected experiment errors. Start from R033 to R037 and O019; do not redo the source converse, the chain rule or the initial substitution. A matching achievability analysis has not been requested in this task.
+The Xing and conditional Renyi literature audits remain in their existing dated notes and source folders. No new claim that the complete project problem is absent from the literature is made.
+
+## Next permissible work
+
+Start from O020 and the new note. Review the moment construction, choose a specified model or integrability condition, and connect the nonuniform bound back to the existing converse while preserving the actual first test or justified root power restrictions. Do not replace this task by rederiving the uniform cap implication, the chain rule, or SB001.
+
+A universal finite bound depending on counts alone is ruled out by the stated examples. Exact composite minimax sample complexity, arbitrary optimal policies and matching achievability are not established by this task.
